@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  HAMZA OCEAN SEAFOOD — Premium Online Seafood Store (Pakistan)
+  ============================================================================
+  BUILD STAGE 1 OF 3: HTML STRUCTURE ONLY.
+  style.css and script.js are referenced below but will be built in the
+  next two stages. This file is fully commented and organized by section
+  so it's easy to review before we move on.
+
+  ============================================================================
+  PLACEHOLDERS TO REPLACE BEFORE LAUNCH (search for these strings):
+  ============================================================================
+  • 92XXXXXXXXXX              → Real WhatsApp number (used in wa.me links)
+  • +92-XXX-XXXXXXX           → Real phone number (used in tel: links)
+  • info@hamzaoceanseafood.pk  → Real email address (placeholder domain)
+  • www.hamzaoceanseafood.pk   → Real domain (canonical, OG, Twitter, JSON-LD)
+  • GA_MEASUREMENT_ID         → Real Google Analytics 4 Measurement ID
+  • YOUR_WEB3FORMS_ACCESS_KEY → Real Web3Forms access key
+  • HERO_VIMEO_VIDEO_ID       → Real Vimeo video ID for the hero background (in script.js)
+  • PROCESS_VIMEO_VIDEO_ID    → Real Vimeo video ID for the process section (data-vimeo-id attr, index.html)
+  • linkedin.com/company/hamzaoceanseafood,
+    facebook.com/hamzaoceanseafood,
+    instagram.com/hamzaoceanseafood,
+    tiktok.com/@hamzaoceanseafood → Real social profile URLs
+  • YOUR_PORTFOLIO_URL        → Real portfolio link (footer credit)
+  • assets/images/...         → Real photography (logo, hero, product shots)
+  • Rs. [PRICE]                → Real per-kg prices for each product (currently "Contact for Price")
+  • assets/favicon.ico, assets/apple-touch-icon.png → Real favicon files
+  • Google Place ID           → Needed for the Google Reviews CTA section
+  No Google Map is included — this is a nationwide online-only business.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+  <!-- ============ CHARSET & VIEWPORT ============ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content="#0B2942">
+
+  <!-- ============ PRIMARY SEO META ============ -->
+  <title>Hamza Ocean Seafood | Premium Fresh Seafood Delivered Across Pakistan</title>
+  <meta name="description" content="Premium seafood delivered fresh across Pakistan. Shop hand-selected prawns, crab, fish &amp; lobster — hygienically packed and ordered instantly via WhatsApp.">
+  <meta name="keywords" content="online seafood Pakistan, buy seafood online Pakistan, fresh fish delivery, premium prawns Pakistan, seafood home delivery, WhatsApp seafood order, Hamza Ocean Seafood, mud crab Pakistan, lobster online Pakistan">
+  <meta name="author" content="Hamza Ocean Seafood">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.hamzaoceanseafood.pk/">
+
+  <!-- ============ OPEN GRAPH (Facebook / WhatsApp link previews) ============ -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hamza Ocean Seafood">
+  <meta property="og:title" content="Hamza Ocean Seafood | Premium Fresh Seafood Delivered Across Pakistan">
+  <meta property="og:description" content="Hand-selected, sustainably sourced seafood — cleaned, packed, and delivered fresh to your door anywhere in Pakistan. Order in seconds on WhatsApp.">
+  <meta property="og:image" content="https://www.hamzaoceanseafood.pk/assets/images/og-image.jpg">
+  <meta property="og:url" content="https://www.hamzaoceanseafood.pk/">
+  <meta property="og:locale" content="en_PK">
+
+  <!-- ============ TWITTER CARD ============ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hamza Ocean Seafood | Premium Fresh Seafood Delivered Across Pakistan">
+  <meta name="twitter:description" content="Hand-selected, sustainably sourced seafood delivered fresh across Pakistan. Order in seconds on WhatsApp.">
+  <meta name="twitter:image" content="https://www.hamzaoceanseafood.pk/assets/images/og-image.jpg">
+
+  <!-- ============ FAVICONS (placeholders — replace files in /assets) ============ -->
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <!-- ============ GOOGLE FONTS ============ -->
+  <!-- Display: Fraunces (editorial luxury serif) · Body: Manrope (clean geometric sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
+  <!-- ============ PERFORMANCE: preload hero image (LCP) ============ -->
+  <link rel="preload" as="image" href="assets/images/hero-bg.jpg">
+
+  <!-- ============ STYLESHEET (built in Stage 2) ============ -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ============ SCHEMA.ORG JSON-LD (Local/Online Business) ============ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "OnlineStore",
+    "name": "Hamza Ocean Seafood",
+    "description": "Premium, sustainably sourced seafood delivered fresh across Pakistan.",
+    "url": "https://www.hamzaoceanseafood.pk/",
+    "logo": "https://www.hamzaoceanseafood.pk/assets/images/logo.png",
+    "image": "https://www.hamzaoceanseafood.pk/assets/images/og-image.jpg",
+    "telephone": "+92-XXX-XXXXXXX",
+    "email": "info@hamzaoceanseafood.pk",
+    "priceRange": "$$",
+    "areaServed": {
+      "@type": "Country",
+      "name": "Pakistan"
+    },
+    "sameAs": [
+      "https://www.facebook.com/hamzaoceanseafood",
+      "https://www.instagram.com/hamzaoceanseafood",
+      "https://www.tiktok.com/@hamzaoceanseafood",
+      "https://wa.me/92XXXXXXXXXX"
+    ],
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "09:00",
+      "closes": "21:00"
+    }
+  }
+  </script>
+
+  <!-- ============ GOOGLE ANALYTICS (GA4) — visual-free, placeholder ID ============ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+</head>
+
+<body>
+
+  <!-- ============ SKIP LINK (ACCESSIBILITY) ============ -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ========================================================================
+       HEADER / STICKY NAVBAR
+  ======================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+
+      <a href="#home" class="brand" aria-label="Hamza Ocean Seafood — home">
+        <img class="brand-logo" src="assets/images/Logo icon.jpeg" alt="Hamza Ocean Seafood logo" width="48" height="48">
+        <span class="brand-name">Hamza Ocean<span class="brand-name-accent">Seafood</span></span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="#home" class="nav-link" data-nav-link>Home</a></li>
+          <li><a href="#products" class="nav-link" data-nav-link>Products</a></li>
+          <li><a href="#values" class="nav-link" data-nav-link>Values</a></li>
+          <li><a href="#process" class="nav-link" data-nav-link>Process</a></li>
+         <li><a href="#faq" class="nav-link" data-nav-link>FAQ's</a></li>
+          <li><a href="#about" class="nav-link" data-nav-link>About</a></li>
+          <li><a href="#contact" class="nav-link" data-nav-link>Contact</a></li>
+          <li><a href="#newsletter" class="nav-link" data-nav-link>Newsletter</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://wa.me/923710359521?text=Hi%20Hamza%20Ocean%20Seafood%2C%20I%27d%20like%20to%20place%20an%20order."
+           class="btn btn-small btn-whatsapp header-whatsapp-btn"
+           target="_blank" rel="noopener noreferrer">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/>
+            <path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/>
+          </svg>
+          <span>Order Now</span>
+        </a>
+
+        <!-- Hamburger (mobile only) -->
+        <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileDrawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Side Drawer Navigation -->
+  <div class="drawer-overlay" id="drawerOverlay" hidden></div>
+  <nav class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <span class="brand-name">Hamza Ocean<span class="brand-name-accent">Seafood</span></span>
+      <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close menu">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <ul class="mobile-drawer-links">
+      <li><a href="#home" class="nav-link" data-nav-link>Home</a></li>
+      <li><a href="#products" class="nav-link" data-nav-link>Products</a></li>
+      <li><a href="#values" class="nav-link" data-nav-link>Values</a></li>
+      <li><a href="#process" class="nav-link" data-nav-link>Process</a></li>
+      <li><a href="#about" class="nav-link" data-nav-link>About</a></li>
+      <li><a href="#contact" class="nav-link" data-nav-link>Contact</a></li>
+      <li><a href="#newsletter" class="nav-link" data-nav-link>Newsletter</a></li>
+    </ul>
+    <a href="https://wa.me/923710359521" class="btn btn-whatsapp mobile-drawer-cta" target="_blank" rel="noopener noreferrer">
+      Order on WhatsApp
+    </a>
+  </nav>
+
+  <!-- ========================================================================
+       MAIN CONTENT
+  ======================================================================== -->
+  <main id="main-content">
+
+    <!-- ====================================================================
+         HERO SECTION
+    ==================================================================== -->
+    <section class="hero" id="home">
+      <div class="hero-media" aria-hidden="true">
+        <img class="hero-bg-image" id="heroFallbackImage" src="assets/images/Hero-bg-1.jpg" alt="" width="1920" height="1080" fetchpriority="high">
+        <!-- Vimeo background video player is injected here by script.js (loadVimeoSDK / initHeroVideo).
+             Replace HERO_VIMEO_VIDEO_ID in script.js with the real Vimeo video ID.
+             The fallback image above stays in the DOM and is hidden once the video is ready,
+             so slow connections / autoplay-blocked browsers still get a hero image. -->
+        <div class="hero-video-wrap" id="heroVideoWrap"></div>
+        <div class="hero-overlay"></div>
+      </div>
+
+  
+      <div class="hero-content container">
+        <img class="hero-logo" src="assets/images/logo.png" alt="Hamza Ocean Seafood logo" width="96" height="96">
+        <p class="hero-eyebrow">Premium Seafood &middot; Delivered Nationwide</p>
+        <h1 class="hero-title">Hamza Ocean Seafood</h1>
+        <p class="hero-slogan">The Finest Catch, Delivered With Distinction</p>
+      
+        <div class="hero-actions">
+          <a href="#products" class="btn btn-primary">Explore Products</a>
+          <a href="https://wa.me/923710359521?text=Hi%20Hamza%20Ocean%20Seafood%2C%20I%27d%20like%20to%20place%20an%20order."
+             class="btn btn-secondary btn-whatsapp" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/>
+              <path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/>
+            </svg>
+            <span>Order on WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+      <a href="#products" class="scroll-indicator" aria-label="Scroll to Products section">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="m6 9 6 6 6-6"/>
+        </svg>
+      </a>
+    </section>
+
+    <!-- Signature ocean wave divider -->
+    <div class="section-divider wave-divider" aria-hidden="true">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C240,90 480,0 720,40 C960,80 1200,10 1440,50 L1440,100 L0,100 Z"></path>
+      </svg>
+    </div>
+
+    <!-- ====================================================================
+         PRODUCTS SECTION
+    ==================================================================== -->
+    <section class="products" id="products">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Our Selection</p>
+          <h2 class="section-title">Premium Seafood, Handpicked for You</h2>
+          <p class="section-subtitle">Every product is sourced, cleaned, and packed to the highest standard — choose your quantity and order directly on WhatsApp.</p>
+        </div>
+
+        <div class="products-grid">
+
+          <!-- ============ PRODUCT 1: Red Snapper (Heera) ============ -->
+          <article class="product-card" data-product-id="red-snapper">
+            <div class="product-image-wrap">
+              <img src="assets/images/Red-snapper.jpg" alt="Red Snapper (Heera) from Hamza Ocean Seafood" width="600" height="600" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3 class="product-name">Red Snapper (Heera)</h3>
+              <p class="product-desc">Firm, mild, and prized by chefs — known locally as Heera, this versatile catch is a favourite whole or filleted.</p>
+              <ul class="product-highlights">
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Chef's Favourite</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Whole or Filleted</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Ice-Packed Freshness</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Premium Quality</li>
+              </ul>
+              <p class="product-price"><span class="price-value">Contact for Price</span></p>
+
+              <div class="product-order-options">
+                <p class="order-options-heading">Confirm Order</p>
+                <div class="form-field">
+                  <label for="qty-red-snapper">Quantity</label>
+                  <select id="qty-red-snapper" class="qty-select" data-product-qty>
+                    <option value="1">1 kg</option>
+                    <option value="2">2 kg</option>
+                    <option value="3">3 kg</option>
+                    <option value="5">5 kg</option>
+                    <option value="10">10 kg</option>
+                    <option value="custom">Custom Quantity</option>
+                  </select>
+                </div>
+                <div class="form-field custom-qty-field" hidden>
+                  <label for="custom-qty-red-snapper">Custom Quantity (kg)</label>
+                  <input type="number" id="custom-qty-red-snapper" min="0.5" step="0.5" placeholder="e.g. 7" data-product-custom-qty>
+                </div>
+                <div class="form-field">
+                  <label for="notes-red-snapper">Special Instructions (optional)</label>
+                  <textarea id="notes-red-snapper" rows="2" placeholder="e.g. Whole, cleaned, no scales" data-product-notes></textarea>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-order-whatsapp" data-product-name="Red Snapper (Heera)" aria-label="Order Red Snapper (Heera) on WhatsApp">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/>
+                  <path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/>
+                </svg>
+                <span>Order on WhatsApp</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- ============ PRODUCT 2: King Fish (Surmai) ============ -->
+          <article class="product-card" data-product-id="king-fish">
+            <div class="product-image-wrap">
+              <img src="assets/images/King-fish.jpeg" alt="King Fish (Surmai) from Hamza Ocean Seafood" width="600" height="600" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3 class="product-name">King Fish (Surmai)</h3>
+              <p class="product-desc">Pakistan's most-loved fish — thick, meaty steaks known locally as Surmai, perfect for frying or a rich curry.</p>
+              <ul class="product-highlights">
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Thick-Cut Steaks</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Rich in Flavour</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Bone-In or Boneless</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Ice-Packed Freshness</li>
+              </ul>
+              <p class="product-price"><span class="price-value">Contact for Price</span></p>
+
+              <div class="product-order-options">
+                <p class="order-options-heading">Confirm Order</p>
+                <div class="form-field">
+                  <label for="qty-king-fish">Quantity</label>
+                  <select id="qty-king-fish" class="qty-select" data-product-qty>
+                    <option value="1">1 kg</option>
+                    <option value="2">2 kg</option>
+                    <option value="3">3 kg</option>
+                    <option value="5">5 kg</option>
+                    <option value="10">10 kg</option>
+                    <option value="custom">Custom Quantity</option>
+                  </select>
+                </div>
+                <div class="form-field custom-qty-field" hidden>
+                  <label for="custom-qty-king-fish">Custom Quantity (kg)</label>
+                  <input type="number" id="custom-qty-king-fish" min="0.5" step="0.5" placeholder="e.g. 7" data-product-custom-qty>
+                </div>
+                <div class="form-field">
+                  <label for="notes-king-fish">Special Instructions (optional)</label>
+                  <textarea id="notes-king-fish" rows="2" placeholder="e.g. Cut into steaks" data-product-notes></textarea>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-order-whatsapp" data-product-name="King Fish (Surmai)" aria-label="Order King Fish (Surmai) on WhatsApp">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/>
+                  <path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/>
+                </svg>
+                <span>Order on WhatsApp</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- ============ PRODUCT 3: White Pomfret (Safed Paplet) ============ -->
+          <article class="product-card" data-product-id="white-pomfret">
+            <div class="product-image-wrap">
+              <img src="assets/images/white-pomfret2.jpg" alt="White Pomfret (Safed Paplet) from Hamza Ocean Seafood" width="600" height="600" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3 class="product-name">White Pomfret (Safed Paplet)</h3>
+              <p class="product-desc">Delicate and sweet-fleshed — known locally as Safed Paplet, a classic favourite that's pan-ready for a traditional dinner.</p>
+              <ul class="product-highlights">
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Whole & Fresh</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Cleaned on Request</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Premium Grading</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Sustainably Sourced</li>
+              </ul>
+              <p class="product-price"><span class="price-value">Contact for Price</span></p>
+
+              <div class="product-order-options">
+                <p class="order-options-heading">Confirm Order</p>
+                <div class="form-field">
+                  <label for="qty-white-pomfret">Quantity</label>
+                  <select id="qty-white-pomfret" class="qty-select" data-product-qty>
+                    <option value="1">1 kg</option>
+                    <option value="2">2 kg</option>
+                    <option value="3">3 kg</option>
+                    <option value="5">5 kg</option>
+                    <option value="10">10 kg</option>
+                    <option value="custom">Custom Quantity</option>
+                  </select>
+                </div>
+                <div class="form-field custom-qty-field" hidden>
+                  <label for="custom-qty-white-pomfret">Custom Quantity (kg)</label>
+                  <input type="number" id="custom-qty-white-pomfret" min="0.5" step="0.5" placeholder="e.g. 7" data-product-custom-qty>
+                </div>
+                <div class="form-field">
+                  <label for="notes-white-pomfret">Special Instructions (optional)</label>
+                  <textarea id="notes-white-pomfret" rows="2" placeholder="e.g. Whole, cleaned" data-product-notes></textarea>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-order-whatsapp" data-product-name="White Pomfret (Safed Paplet)" aria-label="Order White Pomfret (Safed Paplet) on WhatsApp">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/>
+                  <path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/>
+                </svg>
+                <span>Order on WhatsApp</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- ============ PRODUCT 4: Black Pomfret (Kala Paplet) ============ -->
+          <article class="product-card" data-product-id="black-pomfret">
+            <div class="product-image-wrap">
+              <img src="assets/images/Black-pomfret.jpg" alt="Black Pomfret (Kala Paplet) from Hamza Ocean Seafood" width="600" height="600" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3 class="product-name">Black Pomfret (Kala Paplet)</h3>
+              <p class="product-desc">Firmer and richer than its white counterpart — known locally as Kala Paplet, excellent grilled or in a bold masala fry.</p>
+              <ul class="product-highlights">
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Whole & Fresh</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Cleaned on Request</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Rich, Firm Texture</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Sustainably Sourced</li>
+              </ul>
+              <p class="product-price"><span class="price-value">Contact for Price</span></p>
+
+              <div class="product-order-options">
+                <p class="order-options-heading">Confirm Order</p>
+                <div class="form-field">
+                  <label for="qty-black-pomfret">Quantity</label>
+                  <select id="qty-black-pomfret" class="qty-select" data-product-qty>
+                    <option value="1">1 kg</option>
+                    <option value="2">2 kg</option>
+                    <option value="3">3 kg</option>
+                    <option value="5">5 kg</option>
+                    <option value="10">10 kg</option>
+                    <option value="custom">Custom Quantity</option>
+                  </select>
+                </div>
+                <div class="form-field custom-qty-field" hidden>
+                  <label for="custom-qty-black-pomfret">Custom Quantity (kg)</label>
+                  <input type="number" id="custom-qty-black-pomfret" min="0.5" step="0.5" placeholder="e.g. 7" data-product-custom-qty>
+                </div>
+                <div class="form-field">
+                  <label for="notes-black-pomfret">Special Instructions (optional)</label>
+                  <textarea id="notes-black-pomfret" rows="2" placeholder="e.g. Whole, cleaned" data-product-notes></textarea>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-order-whatsapp" data-product-name="Black Pomfret (Kala Paplet)" aria-label="Order Black Pomfret (Kala Paplet) on WhatsApp">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/>
+                  <path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/>
+                </svg>
+                <span>Order on WhatsApp</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- ============ PRODUCT 5: Tuna (Dawan) ============ -->
+          <article class="product-card" data-product-id="tuna">
+            <div class="product-image-wrap">
+              <img src="assets/images/Tuna.jpeg" alt="Tuna (Dawan) from Hamza Ocean Seafood" width="600" height="600" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3 class="product-name">Tuna (Dawan)</h3>
+              <p class="product-desc">Deep-sea tuna with a dense, meaty texture — known locally as Dawan, ideal for grilling, searing, or a hearty curry.</p>
+              <ul class="product-highlights">
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Deep-Sea Sourced</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Thick-Cut Steaks</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Flash-Chilled</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Premium Quality</li>
+              </ul>
+              <p class="product-price"><span class="price-value">Contact for Price</span></p>
+
+              <div class="product-order-options">
+                <p class="order-options-heading">Confirm Order</p>
+                <div class="form-field">
+                  <label for="qty-tuna">Quantity</label>
+                  <select id="qty-tuna" class="qty-select" data-product-qty>
+                    <option value="1">1 kg</option>
+                    <option value="2">2 kg</option>
+                    <option value="3">3 kg</option>
+                    <option value="5">5 kg</option>
+                    <option value="10">10 kg</option>
+                    <option value="custom">Custom Quantity</option>
+                  </select>
+                </div>
+                <div class="form-field custom-qty-field" hidden>
+                  <label for="custom-qty-tuna">Custom Quantity (kg)</label>
+                  <input type="number" id="custom-qty-tuna" min="0.5" step="0.5" placeholder="e.g. 7" data-product-custom-qty>
+                </div>
+                <div class="form-field">
+                  <label for="notes-tuna">Special Instructions (optional)</label>
+                  <textarea id="notes-tuna" rows="2" placeholder="e.g. Cut into steaks" data-product-notes></textarea>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-order-whatsapp" data-product-name="Tuna (Dawan)" aria-label="Order Tuna (Dawan) on WhatsApp">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/>
+                  <path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/>
+                </svg>
+                <span>Order on WhatsApp</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- ============ PRODUCT 6: Grouper ============ -->
+          <article class="product-card" data-product-id="grouper">
+            <div class="product-image-wrap">
+              <img src="assets/images/Grouper.jpeg" alt="Grouper from Hamza Ocean Seafood" width="600" height="600" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3 class="product-name">Grouper</h3>
+              <p class="product-desc">Firm white flesh with a naturally sweet flavour — known locally as Giser, a chef's favourite steamed, fried, or grilled whole.</p>
+              <ul class="product-highlights">
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Chef's Favourite</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Whole or Filleted</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Firm White Flesh</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Premium Quality</li>
+              </ul>
+              <p class="product-price"><span class="price-value">Contact for Price</span></p>
+
+              <div class="product-order-options">
+                <p class="order-options-heading">Confirm Order</p>
+                <div class="form-field">
+                  <label for="qty-grouper">Quantity</label>
+                  <select id="qty-grouper" class="qty-select" data-product-qty>
+                    <option value="1">1 kg</option>
+                    <option value="2">2 kg</option>
+                    <option value="3">3 kg</option>
+                    <option value="5">5 kg</option>
+                    <option value="10">10 kg</option>
+                    <option value="custom">Custom Quantity</option>
+                  </select>
+                </div>
+                <div class="form-field custom-qty-field" hidden>
+                  <label for="custom-qty-grouper">Custom Quantity (kg)</label>
+                  <input type="number" id="custom-qty-grouper" min="0.5" step="0.5" placeholder="e.g. 7" data-product-custom-qty>
+                </div>
+                <div class="form-field">
+                  <label for="notes-grouper">Special Instructions (optional)</label>
+                  <textarea id="notes-grouper" rows="2" placeholder="e.g. Whole, cleaned" data-product-notes></textarea>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-order-whatsapp" data-product-name="Grouper (Giser)" aria-label="Order Grouper (Mushka) on WhatsApp">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/>
+                  <path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/>
+                </svg>
+                <span>Order on WhatsApp</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- ============ PRODUCT 7: Jumbo Tiger Prawns ============ -->
+          <article class="product-card" data-product-id="jumbo-prawns">
+            <div class="product-image-wrap">
+              <img src="assets/images/Tiger-prawns.jpeg" alt="Tiger Prawns from Hamza Ocean Seafood" width="600" height="600" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3 class="product-name"> Tiger Prawns</h3>
+              <p class="product-desc">Plump, succulent jumbo tiger prawns hand-picked at peak size and sweetness — the crown jewel of any seafood spread.</p>
+              <ul class="product-highlights">
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Fresh Daily Catch</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Deveined & Cleaned</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Hygienically Packed</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Direct from the Coast</li>
+              </ul>
+              <p class="product-price"><span class="price-value">Contact for Price</span></p>
+
+              <div class="product-order-options">
+                <p class="order-options-heading">Confirm Order</p>
+                <div class="form-field">
+                  <label for="qty-jumbo-prawns">Quantity</label>
+                  <select id="qty-jumbo-prawns" class="qty-select" data-product-qty>
+                    <option value="1">1 kg</option>
+                    <option value="2">2 kg</option>
+                    <option value="3">3 kg</option>
+                    <option value="5">5 kg</option>
+                    <option value="10">10 kg</option>
+                    <option value="custom">Custom Quantity</option>
+                  </select>
+                </div>
+                <div class="form-field custom-qty-field" hidden>
+                  <label for="custom-qty-jumbo-prawns">Custom Quantity (kg)</label>
+                  <input type="number" id="custom-qty-jumbo-prawns" min="0.5" step="0.5" placeholder="e.g. 7" data-product-custom-qty>
+                </div>
+                <div class="form-field">
+                  <label for="notes-jumbo-prawns">Special Instructions (optional)</label>
+                  <textarea id="notes-jumbo-prawns" rows="2" placeholder="e.g. Peeled &amp; deveined" data-product-notes></textarea>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-order-whatsapp" data-product-name="Tiger Prawns" aria-label="Order Tiger Prawns on WhatsApp">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/>
+                  <path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/>
+                </svg>
+                <span>Order on WhatsApp</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- ============ PRODUCT 8: Medium Prawns ============ -->
+          <article class="product-card" data-product-id="medium-prawns">
+            <div class="product-image-wrap">
+              <img src="assets/images/Prawns-Jeera.jpeg" alt="Medium Prawns from Hamza Ocean Seafood" width="600" height="600" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3 class="product-name">Medium Prawns</h3>
+              <p class="product-desc">Tender, everyday prawns with great value — perfect for curries, biryani, and quick stir-fries.</p>
+              <ul class="product-highlights">
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Fresh Daily Catch</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Deveined & Cleaned</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Hygienically Packed</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Great Everyday Value</li>
+              </ul>
+              <p class="product-price"><span class="price-value">Contact for Price</span></p>
+
+              <div class="product-order-options">
+                <p class="order-options-heading">Confirm Order</p>
+                <div class="form-field">
+                  <label for="qty-medium-prawns">Quantity</label>
+                  <select id="qty-medium-prawns" class="qty-select" data-product-qty>
+                    <option value="1">1 kg</option>
+                    <option value="2">2 kg</option>
+                    <option value="3">3 kg</option>
+                    <option value="5">5 kg</option>
+                    <option value="10">10 kg</option>
+                    <option value="custom">Custom Quantity</option>
+                  </select>
+                </div>
+                <div class="form-field custom-qty-field" hidden>
+                  <label for="custom-qty-medium-prawns">Custom Quantity (kg)</label>
+                  <input type="number" id="custom-qty-medium-prawns" min="0.5" step="0.5" placeholder="e.g. 7" data-product-custom-qty>
+                </div>
+                <div class="form-field">
+                  <label for="notes-medium-prawns">Special Instructions (optional)</label>
+                  <textarea id="notes-medium-prawns" rows="2" placeholder="e.g. Peeled &amp; deveined" data-product-notes></textarea>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-order-whatsapp" data-product-name="Medium Prawns" aria-label="Order Medium Prawns on WhatsApp">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/>
+                  <path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/>
+                </svg>
+                <span>Order on WhatsApp</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- ============ PRODUCT 9: Small Prawns ============ -->
+          <article class="product-card" data-product-id="small-prawns">
+            <div class="product-image-wrap">
+              <img src="assets/images/small-prawns.jpg" alt="Small Prawns from Hamza Ocean Seafood" width="600" height="600" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3 class="product-name">Small Prawns</h3>
+              <p class="product-desc">Small, flavour-packed prawns ideal for pulao, chutneys, and dishes that call for bite-sized seafood.</p>
+              <ul class="product-highlights">
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Fresh Daily Catch</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Deveined & Cleaned</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Hygienically Packed</li>
+                <li><svg class="icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Perfect for Pulao & Chutney</li>
+              </ul>
+              <p class="product-price"><span class="price-value">Contact for Price</span></p>
+
+              <div class="product-order-options">
+                <p class="order-options-heading">Confirm Order</p>
+                <div class="form-field">
+                  <label for="qty-small-prawns">Quantity</label>
+                  <select id="qty-small-prawns" class="qty-select" data-product-qty>
+                    <option value="1">1 kg</option>
+                    <option value="2">2 kg</option>
+                    <option value="3">3 kg</option>
+                    <option value="5">5 kg</option>
+                    <option value="10">10 kg</option>
+                    <option value="custom">Custom Quantity</option>
+                  </select>
+                </div>
+                <div class="form-field custom-qty-field" hidden>
+                  <label for="custom-qty-small-prawns">Custom Quantity (kg)</label>
+                  <input type="number" id="custom-qty-small-prawns" min="0.5" step="0.5" placeholder="e.g. 7" data-product-custom-qty>
+                </div>
+                <div class="form-field">
+                  <label for="notes-small-prawns">Special Instructions (optional)</label>
+                  <textarea id="notes-small-prawns" rows="2" placeholder="e.g. Cleaned, shell-on" data-product-notes></textarea>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-order-whatsapp" data-product-name="Small Prawns" aria-label="Order Small Prawns on WhatsApp">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/>
+                  <path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/>
+                </svg>
+                <span>Order on WhatsApp</span>
+              </button>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Availability note — bridges to the contact form for anything not listed above -->
+        <div class="products-note">
+          <span class="products-note-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 1.8-2 3.5"/><path d="M12 16.5v.01"/></svg>
+          </span>
+          <p class="products-note-text">Can't find what you're craving? Message us on WhatsApp, or fill out the <a href="#contact">form below</a> — we'll check availability and get it delivered to you.</p>
+          <a href="https://wa.me/92710359521?text=Hi%20Hamza%20Ocean%20Seafood%2C%20I%27m%20looking%20for%20a%20product%20that%27s%20not%20listed%20on%20the%20website."
+             class="btn btn-small btn-whatsapp" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/>
+              <path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/>
+            </svg>
+            <span>WhatsApp Us</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VALUES & MISSION SECTION
+    ==================================================================== -->
+    <section class="values" id="values">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Why Hamza Ocean</p>
+          <h2 class="section-title">Built on Trust, Delivered With Care</h2>
+          <p class="section-subtitle">Every order reflects the standards we hold ourselves to — from the harbor to your home.</p>
+        </div>
+
+        <div class="values-grid">
+
+          <div class="value-card">
+            <span class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M3 12s3-5 9-5 9 5 9 5-3 5-9 5-9-5-9-5Z"/><path d="M21 12l3-3v6l-3-3Z" opacity="0"/><circle cx="8" cy="10.5" r=".9" fill="currentColor" stroke="none"/></svg>
+            </span>
+            <h3 class="value-title">Premium Fresh Seafood</h3>
+            <p class="value-desc">Every order is hand-selected at peak freshness — never compromised, never ordinary.</p>
+          </div>
+
+          <div class="value-card">
+            <span class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12.6 2.6 21 11l-9.4 9.4a2 2 0 0 1-2.8 0L2.6 14.2a2 2 0 0 1 0-2.8L12 2.6a2 2 0 0 1 .6 0Z"/><circle cx="8" cy="8" r="1.5" fill="currentColor" stroke="none"/></svg>
+            </span>
+            <h3 class="value-title">Reasonable Prices</h3>
+            <p class="value-desc">Luxury quality shouldn't mean unreasonable cost. We keep premium seafood accessible.</p>
+          </div>
+
+          <div class="value-card">
+            <span class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M20 4C10 4 4 10 4 18c0 .6.4 1 1 1 8 0 14-6 14-15 0-.5 0-1 1-1Z"/><path d="M5 19c4-4 8-7 15-15"/></svg>
+            </span>
+            <h3 class="value-title">Eco-Friendly Packaging</h3>
+            <p class="value-desc">Sustainable, eco-conscious packaging that protects your seafood and the planet.</p>
+          </div>
+
+          <div class="value-card">
+            <span class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg>
+            </span>
+            <h3 class="value-title">Advance Payment</h3>
+            <p class="value-desc">Secure, convenient advance payment options for a seamless ordering experience.</p>
+          </div>
+
+          <div class="value-card">
+            <span class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 9v.01M18 15v.01"/></svg>
+            </span>
+            <h3 class="value-title">Cash on Delivery</h3>
+            <p class="value-desc">Pay at your doorstep in select areas — simple, flexible, and trustworthy.</p>
+          </div>
+
+          <div class="value-card">
+            <span class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.5"/><circle cx="17.5" cy="18" r="1.5"/></svg>
+            </span>
+            <h3 class="value-title">Timely Delivery</h3>
+            <p class="value-desc">Cold-chain logistics ensure your order arrives fresh, fast, and right on schedule.</p>
+          </div>
+
+          <div class="value-card">
+            <span class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 20s-7-4.4-9.5-8.8C.7 8 2.3 4.5 6 4a5 5 0 0 1 6 3 5 5 0 0 1 6-3c3.7.5 5.3 4 3.5 7.2C19 15.6 12 20 12 20Z"/></svg>
+            </span>
+            <h3 class="value-title">Customer Satisfaction</h3>
+            <p class="value-desc">Every relationship is built on trust — your satisfaction is our standard.</p>
+          </div>
+
+          <div class="value-card">
+            <span class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <h3 class="value-title">Quality Assurance</h3>
+            <p class="value-desc">Rigorous quality checks at every stage, from harbor to your home.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PROCESS SECTION
+    ==================================================================== -->
+    <section class="process" id="process">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">How It Works</p>
+          <h2 class="section-title">From the Harbor to Your Home</h2>
+          <p class="section-subtitle">A careful, cold-chain process designed to protect freshness at every step.</p>
+        </div>
+
+        <!-- Premium video card (Vimeo embed with custom controls) -->
+        <div class="process-video-card">
+          <div class="video-wrapper" id="processVideoWrap" data-vimeo-id="1223723417">
+            <!-- Vimeo Player is injected here by script.js (loadVimeoSDK / initProcessVideo).
+                 Replace PROCESS_VIMEO_VIDEO_ID above with the real Vimeo video ID. -->
+          
+          </div>
+        </div>
+
+        <!-- Ordered list: this is a genuine sequential process, so numbering is meaningful -->
+        <ol class="process-timeline">
+
+          <li class="process-step">
+            <span class="step-number" aria-hidden="true">01</span>
+            <span class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M9 12h6M9 16h6"/></svg>
+            </span>
+            <h3 class="step-title">Customer Order</h3>
+            <p class="step-desc">You place your order online or via WhatsApp, choosing your seafood and preferences.</p>
+          </li>
+
+          <li class="process-step">
+            <span class="step-number" aria-hidden="true">02</span>
+            <span class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.3-4.3"/></svg>
+            </span>
+            <h3 class="step-title">Fish Selection</h3>
+            <p class="step-desc">Our sourcing team hand-selects the freshest catch from trusted coastal suppliers.</p>
+          </li>
+
+          <li class="process-step">
+            <span class="step-number" aria-hidden="true">03</span>
+            <span class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 2s6 7 6 12a6 6 0 0 1-12 0c0-5 6-12 6-12Z"/></svg>
+            </span>
+            <h3 class="step-title">Cleaning</h3>
+            <p class="step-desc">Each item is thoroughly cleaned to the highest hygiene standards.</p>
+          </li>
+
+          <li class="process-step">
+            <span class="step-number" aria-hidden="true">04</span>
+            <span class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M3 21 15 9"/><path d="M15 9c2-2 5-5 6-4 1 1-2 4-4 6"/><path d="m9 15 3 3"/></svg>
+            </span>
+            <h3 class="step-title">Cutting</h3>
+            <p class="step-desc">Precision cutting — steaks, fillets, or whole — exactly to your preference.</p>
+          </li>
+
+          <li class="process-step">
+            <span class="step-number" aria-hidden="true">05</span>
+            <span class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>
+            </span>
+            <h3 class="step-title">Packing</h3>
+            <p class="step-desc">Vacuum-sealed, leak-proof packaging locks in freshness and quality.</p>
+          </li>
+
+          <li class="process-step">
+            <span class="step-number" aria-hidden="true">06</span>
+            <span class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 2v20M4.9 6l14.2 12M4.9 18 19.1 6"/></svg>
+            </span>
+            <h3 class="step-title">Cold Packaging</h3>
+            <p class="step-desc">Insulated cold-chain packaging maintains the optimal temperature throughout transit.</p>
+          </li>
+
+          <li class="process-step">
+            <span class="step-number" aria-hidden="true">07</span>
+            <span class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.5"/><circle cx="17.5" cy="18" r="1.5"/></svg>
+            </span>
+            <h3 class="step-title">Dispatch</h3>
+            <p class="step-desc">Your order is dispatched swiftly through our trusted delivery network.</p>
+          </li>
+
+          <li class="process-step">
+            <span class="step-number" aria-hidden="true">08</span>
+            <span class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 21V9l8-6 8 6v12"/><path d="M9 21v-6h6v6"/></svg>
+            </span>
+            <h3 class="step-title">Customer Delivery</h3>
+            <p class="step-desc">Fresh seafood arrives at your doorstep, ready to enjoy.</p>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FAQ SECTION
+    ==================================================================== -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Got Questions?</p>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">Everything you need to know before you order.</p>
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <h3 class="faq-question">
+              <button type="button" class="faq-toggle" aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1">
+                <span>Do you deliver across all of Pakistan?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-question-1" hidden>
+              <p>Yes — Hamza Ocean Seafood delivers nationwide. Delivery timelines vary slightly by city, and we confirm an estimated delivery window when you place your order.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-question">
+              <button type="button" class="faq-toggle" aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2">
+                <span>Why don't you list prices for your products?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-question-2" hidden>
+              <p>Fish market prices change daily depending on catch, season, and supply, so a fixed price today could be inaccurate tomorrow. To make sure you always get an honest, up-to-date rate, message us on WhatsApp for the latest prices before you order.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-question">
+              <button type="button" class="faq-toggle" aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3">
+                <span>How do you keep the seafood fresh during delivery?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-question-3" hidden>
+              <p>Every order is hand-selected, cleaned, and vacuum-sealed in leak-proof packaging inside insulated cold-chain boxes, preserving freshness from our facility to your doorstep.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-question">
+              <button type="button" class="faq-toggle" aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4">
+                <span>How do I place an order?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-4" role="region" aria-labelledby="faq-question-4" hidden>
+              <p>Pick your quantity and any special instructions on a product card, then tap "Order on WhatsApp" — we'll confirm availability and price right there in the chat.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-question">
+              <button type="button" class="faq-toggle" aria-expanded="false" aria-controls="faq-answer-5" id="faq-question-5">
+                <span>What payment methods do you accept?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-5" role="region" aria-labelledby="faq-question-5" hidden>
+              <p>We accept advance payment via EasyPaisa and JazzCash, plus Cash on Delivery in select cities.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-question">
+              <button type="button" class="faq-toggle" aria-expanded="false" aria-controls="faq-answer-6" id="faq-question-6">
+                <span>Can I request custom cutting or cleaning?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-6" role="region" aria-labelledby="faq-question-6" hidden>
+              <p>Yes — every product has a special instructions field, so you can request fillets, steaks, deveining, skin removal, and more.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-question">
+              <button type="button" class="faq-toggle" aria-expanded="false" aria-controls="faq-answer-7" id="faq-question-7">
+                <span>What if I'm not happy with my order?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-7" role="region" aria-labelledby="faq-question-7" hidden>
+              <p>Message us on WhatsApp within 24 hours of delivery and we'll make it right — your satisfaction is our standard.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-question">
+              <button type="button" class="faq-toggle" aria-expanded="false" aria-controls="faq-answer-8" id="faq-question-8">
+                <span>Can't find a specific fish or seafood item?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-8" role="region" aria-labelledby="faq-question-8" hidden>
+              <p>Message us on WhatsApp with what you're looking for — we'll check availability with our sourcing partners and get back to you.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         ABOUT SECTION
+    ==================================================================== -->
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-media">
+          <img src="assets/images/About-2.jpg" alt="Hamza Ocean Seafood sourcing team selecting fresh catch" width="800" height="900" loading="lazy">
+        </div>
+        <div class="about-content">
+          <p class="section-eyebrow">Our Story</p>
+          <h2 class="section-title">Bringing Pakistan's Coast to Your Doorstep</h2>
+
+          <p>Hamza Ocean Seafood was founded on a simple belief: that Pakistan's coastal waters produce seafood worthy of an international luxury brand, and that every household deserves access to it — without compromise, and without leaving home.</p>
+
+          <p>We work directly with trusted harbors and fishing communities along the coast, cutting out unnecessary middlemen so that what reaches your kitchen is as close to the source as possible. Every item is hand-selected for freshness, cleaned and cut to your preference, and sealed within a cold chain built to protect quality from harbor to home.</p>
+
+          <p>Our mission is straightforward: make premium seafood shopping effortless, trustworthy, and genuinely enjoyable — from your first WhatsApp message to the moment your order arrives. Our vision extends further still, toward a future where Hamza Ocean Seafood is the name every Pakistani household trusts first for seafood, wherever they are in the country.</p>
+
+          <p>As we grow, we're investing in wider coverage, faster cold-chain logistics, and an even more refined catalogue — always guided by the same principle we started with: freshness and trust, delivered with distinction.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         CONTACT SECTION
+    ==================================================================== -->
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+
+        <div class="contact-info">
+          <p class="section-eyebrow">Get in Touch</p>
+          <h2 class="section-title">We're Here to Help</h2>
+          <p class="section-subtitle">Reach out on WhatsApp for the fastest response, or use any of the details below.</p>
+
+          <ul class="contact-details">
+            <li>
+              <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/></svg></span>
+              <a href="https://wa.me/92710359521" target="_blank" rel="noopener noreferrer">+92 710 359521 (WhatsApp)</a>
+            </li>
+            <li>
+              <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/></svg></span>
+              <a href="https://wa.me/92350213648" target="_blank" rel="noopener noreferrer">+92 350 213648 (WhatsApp)</a>
+            </li>
+            <li>
+              <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 5c0-1 1-2 2-2h2l2 5-2 1.5c1 2.5 2.5 4 5 5l1.5-2 5 2v2c0 1-1 2-2 2C9.5 18.5 4 13 4 5Z"/></svg></span>
+              <a href="tel:+92710359521">+92-710-359521</a>
+            </li>
+            <li>
+              <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+              <a href="mailto:hamzaseafood07@gmail.com">hamzaseafood07@gmail.com</a>
+            </li>
+            <li>
+              <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 22s7-6.7 7-12a7 7 0 1 0-14 0c0 5.3 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+              <span>Delivering nationwide across Pakistan — fully online, no storefront</span>
+            </li>
+            <li>
+              <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+              <span>24 hours</span>
+            </li>
+          </ul>
+
+          <div class="social-links">
+            <a href="https://wa.me/92710359521" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.facebook.com/share/19MBPrvXYY/" target="_blank" rel="noopener noreferrer" aria-label="Hamza Ocean Seafood on Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M14 8h-2a2 2 0 0 0-2 2v2H8v3h2v6h3v-6h2.2l.3-3H13v-1.5c0-.6.4-1 1-1h1V8Z" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.instagram.com/hamzaoceanseafood?igsh=MWxtODYwYnR4MzV1ZA==" target="_blank" rel="noopener noreferrer" aria-label="Hamza Ocean Seafood on Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/hamza-ocean-seafood/" target="_blank" rel="noopener noreferrer" aria-label="Hamza Ocean Seafood on LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 10v6.5M7.5 7.2v.1M12 16.5V13a2.2 2.2 0 0 1 4.4 0v3.5M12 16.5v-4.7" fill="none"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@hamzaoceanseafood?_r=1&_t=ZS-99U7o56OZy0" target="_blank" rel="noopener noreferrer" aria-label="Hamza Ocean Seafood on TikTok">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M14 3v10.5a3.5 3.5 0 1 1-3-3.46"/><path d="M14 3c.5 2.5 2 4 4.5 4.3"/></svg>
+            </a>
+            <a href="mailto:info@hamzaoceanseafood.pk" aria-label="Email Hamza Ocean Seafood">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <!-- Web3Forms integration — replace access_key with real key -->
+          <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+            <input type="hidden" name="subject" value="New Contact Form Submission — Hamza Ocean Seafood">
+            <input type="hidden" name="from_name" value="Hamza Ocean Seafood Website">
+            <!-- Honeypot spam field (kept off-screen for bots only, not for sighted users) -->
+            <input type="checkbox" name="botcheck" class="honeypot-field" hidden tabindex="-1" autocomplete="off">
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required autocomplete="name">
+              </div>
+              <div class="form-field">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="03XX XXXXXXX">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required autocomplete="email">
+              </div>
+              <div class="form-field">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" required autocomplete="address-level2">
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="formSubject">Subject</label>
+              <input type="text" id="formSubject" name="user_subject" required>
+            </div>
+
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
+
+            <p class="form-success-message" id="formSuccessMessage" role="status" hidden>
+              Thank you! Your message has been sent — we'll get back to you shortly.
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         REVIEWS SECTION
+    ==================================================================== -->
+    <section class="reviews" id="reviews">
+      <div class="container reviews-inner">
+        <div class="reviews-stars" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6L12 2Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6L12 2Z"/></svg>
+        </div>
+        <p class="reviews-rating"></p>
+        <h2 class="reviews-title">Enjoyed Your Order?</h2>
+        <p class="reviews-subtitle">Your review helps other seafood lovers discover Hamza Ocean Seafood, and helps us keep improving.</p>
+        <a href="https://search.google.com/local/writereview?placeid=YOUR_GOOGLE_PLACE_ID" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6L12 2Z"/></svg>
+          <span>Leave a Google Review</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         NEWSLETTER SECTION
+    ==================================================================== -->
+    <section class="newsletter" id="newsletter">
+      <div class="container newsletter-inner">
+        <h2 class="newsletter-title">Stay in the Loop</h2>
+        <p class="newsletter-subtitle">Subscribe for seasonal catches, exclusive offers, and premium seafood recipes — straight to your inbox.</p>
+
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <label for="newsletterEmail" class="visually-hidden">Email address</label>
+          <input type="email" id="newsletterEmail" name="newsletterEmail" required placeholder="Enter your email address">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+        <p class="newsletter-success" id="newsletterSuccess" role="status" hidden>You're subscribed! Welcome to Hamza Ocean Seafood.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       FOOTER
+  ======================================================================== -->
+     <footer class="site-footer">
+    <div class="footer-portfolio container">
+      <a href="YOUR_PORTFOLIO_URL" target="_blank" rel="noopener noreferrer" class="footer-portfolio-link" aria-label="Visit portfolio">
+        <img src="assets/images/portfolio-logo.jpeg" alt="Portfolio logo" width="80" height="80">
+        <span class="footer-portfolio-label">
+          <span class="footer-portfolio-eyebrow">Designed &amp; Developed by</span>
+          <span class="footer-portfolio-name">Reo Digital Studio</span>
+        </span>
+      </a>
+    </div>
+
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/images/Logo.png" alt="Hamza Ocean Seafood logo" width="56" height="56">
+        <p class="footer-desc">Premium seafood, sustainably sourced and delivered fresh across Pakistan.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/92710359521" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://facebook.com/hamzaoceanseafood" target="_blank" rel="noopener noreferrer" aria-label="Hamza Ocean Seafood on Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M14 8h-2a2 2 0 0 0-2 2v2H8v3h2v6h3v-6h2.2l.3-3H13v-1.5c0-.6.4-1 1-1h1V8Z" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://instagram.com/hamzaoceanseafood" target="_blank" rel="noopener noreferrer" aria-label="Hamza Ocean Seafood on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://linkedin.com/company/hamzaoceanseafood" target="_blank" rel="noopener noreferrer" aria-label="Hamza Ocean Seafood on LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 10v6.5M7.5 7.2v.1M12 16.5V13a2.2 2.2 0 0 1 4.4 0v3.5M12 16.5v-4.7" fill="none"/></svg>
+          </a>
+          <a href="https://tiktok.com/@hamzaoceanseafood" target="_blank" rel="noopener noreferrer" aria-label="Hamza Ocean Seafood on TikTok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M14 3v10.5a3.5 3.5 0 1 1-3-3.46"/><path d="M14 3c.5 2.5 2 4 4.5 4.3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer-links" aria-label="Quick links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#values">Values</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-payment">
+        <h3>Payment Methods</h3>
+        <ul>
+          <li>Advance Payment</li>
+          <li>EasyPaisa</li>
+          <li>JazzCash</li>
+          <li>Bank Transfer</li>
+          <li>Cash on Delivery (select cities)</li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="https://wa.me/92710359521" target="_blank" rel="noopener noreferrer">+92 710 359521 (WhatsApp)</a></li>
+          <li><a href="https://wa.me/92350213648" target="_blank" rel="noopener noreferrer">+92 350 213648 (WhatsApp)</a></li>
+          <li><a href="mailto:info@hamzaoceanseafood.pk">info@hamzaoceanseafood.pk</a></li>
+          <li>Serving all across Pakistan</li>
+        </ul>
+      </div>
+
+    </div>
+
+        <div class="footer-bottom container">
+      <p>&copy; <span id="currentYear">2026</span> Hamza Ocean Seafood. All rights reserved.</p>
+      
+      <a href="#home" class="back-to-top-link">Back to Top &uarr;</a>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       FLOATING BUTTONS
+  ======================================================================== -->
+  <a href="https://wa.me/92710359521?text=Hi%20Hamza%20Ocean%20Seafood%2C%20I%27d%20like%20to%20place%20an%20order."
+     class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with Hamza Ocean Seafood on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 9c0 4 2.5 6.5 6.5 6.5.6 0 1-.5.9-1l-1.6-1.6c-.3-.3-.7-.3-1 0l-.5.5c-1-.5-1.9-1.4-2.4-2.4l.5-.5c.3-.3.3-.7 0-1L9.4 8.1c-.5-.1-1 .3-1 .9Z" fill="currentColor" stroke="none"/></svg>
+  </a>
+
+  <button type="button" class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top" hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m6 15 6-6 6 6"/></svg>
+  </button>
+
+  <!-- ============ SCRIPT (built in Stage 3) ============ -->
+  <script src="script.js" defer></script>
+
+</body>
+</html>
