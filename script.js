@@ -33,7 +33,7 @@
 /* ============================================================================
    01. CONSTANTS & SMALL UTILITIES
    ============================================================================ */
-const WHATSAPP_NUMBER = '92XXXXXXXXXX'; // TODO: replace with real number (no +, no spaces)
+const WHATSAPP_NUMBER = '923710359521'; // TODO: replace with real number (no +, no spaces)
 const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY'; // TODO: replace — used for the newsletter form only
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 const HERO_VIMEO_VIDEO_ID = '1223735891' // TODO: replace with real Vimeo video ID for the hero background
