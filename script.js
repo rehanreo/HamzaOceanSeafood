@@ -1,679 +1,384 @@
 'use strict';
 
-/* ============================================================================
-   HAMZA OCEAN SEAFOOD — script.js
-   ============================================================================
-   BUILD STAGE 3 OF 3 (FINAL). HTML and CSS are approved — this file only
-   adds behaviour, it does not rely on anything that isn't already in the
-   markup/stylesheet.
+const site = JSON.parse(document.getElementById('site-data').textContent);
+const products = new Map(site.products.map(product => [product.id, product]));
+const bulkMinimumKg = site.bulkMinimumKg;
+const storageKey = 'hamza-ocean-cart-v1';
+const itemDialog = document.getElementById('item-dialog');
+const itemForm = document.getElementById('item-form');
+const cartDialog = document.getElementById('cart-dialog');
+const checkout = document.getElementById('checkout-form');
+const cartItems = document.getElementById('cart-items');
+const whatsappParts = document.getElementById('whatsapp-parts');
+const toast = document.getElementById('toast');
 
-   PLACEHOLDERS TO REPLACE BEFORE LAUNCH:
-   • WHATSAPP_NUMBER (below)         → real WhatsApp number, digits only
-   • WEB3FORMS_ACCESS_KEY (below)    → real Web3Forms access key
-     (the contact form already carries its own access_key hidden field in
-     index.html — this constant is only used to submit the newsletter form,
-     which has no backend of its own.)
+let cart = readCart();
+let activeProduct = null;
+let editingIndex = null;
+let toastTimer;
+let returnFocusTo;
 
-   TABLE OF CONTENTS
-   01. Constants & small utilities
-   02. Current year (footer)
-   03. Mobile drawer navigation
-   04. Scroll effects (header state, back-to-top, light hero parallax)
-   05. Active section highlighting (scrollspy)
-   06. Scroll-reveal animations (fade up / left / right / scale)
-   07. Button ripple micro-interaction
-   08. Product quantity selectors (custom qty toggle)
-   09. Product "Order on WhatsApp" buttons
-   10. Contact form (Web3Forms)
-   11. Newsletter form (Web3Forms)
-   12. Vimeo video players (hero background + process section)
-   13. Bootstrap
-   ============================================================================ */
+function validQuantity(value) {
+  return Number.isFinite(value) && value >= 0.5 && value <= 1000 && Number.isInteger(value * 2);
+}
 
-/* ============================================================================
-   01. CONSTANTS & SMALL UTILITIES
-   ============================================================================ */
-const WHATSAPP_NUMBER = '923710359521'; // TODO: replace with real number (no +, no spaces)
-const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY'; // TODO: replace — used for the newsletter form only
-const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
-const HERO_VIMEO_VIDEO_ID = '1223735891' // TODO: replace with real Vimeo video ID for the hero background
-
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-/** Fires a GA4 event if gtag is present; silently does nothing otherwise. */
-function trackEvent(eventName, params) {
-  if (typeof gtag === 'function') {
-    gtag('event', eventName, params || {});
+function readCart() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    if (!Array.isArray(saved)) return [];
+    return saved.filter(item => {
+      const product = item && products.get(item.id);
+      return product && validQuantity(item.quantity) && product.cuts.includes(item.cut) && typeof item.note === 'string';
+    }).map(item => ({ ...item, note: item.note.slice(0, 120) }));
+  } catch {
+    return [];
   }
 }
 
-/** Shows a success/error message in one of the form feedback paragraphs. */
-function showFormMessage(el, message, isError) {
-  if (!el) return;
-  el.textContent = message;
-  el.hidden = false;
-  el.classList.toggle('is-error', Boolean(isError));
+function saveCart() {
+  try {
+    localStorage.setItem(storageKey, JSON.stringify(cart));
+  } catch {
+    // The cart remains available on this page if storage is disabled.
+  }
+  renderCart();
 }
 
-/* ============================================================================
-   02. CURRENT YEAR (FOOTER)
-   ============================================================================ */
-function initCurrentYear() {
-  const el = document.getElementById('currentYear');
-  if (el) el.textContent = new Date().getFullYear();
+function measure(eventName, params, metaEvent, metaParams = {}) {
+  if (typeof window.gtag === 'function') window.gtag('event', eventName, params);
+  if (metaEvent && typeof window.fbq === 'function') window.fbq('track', metaEvent, metaParams);
 }
 
-/* ============================================================================
-   03. MOBILE DRAWER NAVIGATION
-   ============================================================================ */
-function initMobileDrawer() {
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const drawer = document.getElementById('mobileDrawer');
-  const overlay = document.getElementById('drawerOverlay');
-  const closeBtn = document.getElementById('drawerCloseBtn');
-
-  if (!hamburgerBtn || !drawer || !overlay) return;
-
-  const drawerLinks = drawer.querySelectorAll('a');
-
-  function openDrawer() {
-    drawer.classList.add('is-open');
-    drawer.setAttribute('aria-hidden', 'false');
-    overlay.hidden = false;
-    hamburgerBtn.setAttribute('aria-expanded', 'true');
-    document.documentElement.classList.add('no-scroll');
-    if (closeBtn) closeBtn.focus();
+function initMetaPixel() {
+  if (location.origin !== site.liveOrigin || !/^\d{8,25}$/.test(site.metaPixelId) || window.fbq) return;
+  function pixel() {
+    if (pixel.callMethod) pixel.callMethod.apply(pixel, arguments);
+    else pixel.queue.push(arguments);
   }
+  pixel.push = pixel;
+  pixel.loaded = true;
+  pixel.version = '2.0';
+  pixel.queue = [];
+  window.fbq = pixel;
+  window._fbq = pixel;
+  const script = document.createElement('script');
+  script.src = 'https://connect.facebook.net/en_US/fbevents.js';
+  script.async = true;
+  document.head.append(script);
+  pixel('init', site.metaPixelId);
+  pixel('track', 'PageView');
+}
 
-  function closeDrawer() {
-    drawer.classList.remove('is-open');
-    drawer.setAttribute('aria-hidden', 'true');
-    overlay.hidden = true;
-    hamburgerBtn.setAttribute('aria-expanded', 'false');
-    document.documentElement.classList.remove('no-scroll');
+function whatsappUrl(lines) {
+  return 'https://wa.me/' + site.whatsapp + '?text=' + encodeURIComponent(lines.join('\n'));
+}
+
+function compact(value) {
+  return String(value || '').trim().replace(/\s+/g, ' ');
+}
+
+function openWhatsApp(lines) {
+  window.open(whatsappUrl(lines), '_blank', 'noopener,noreferrer');
+}
+
+function requiredText(input) {
+  input.setCustomValidity(compact(input.value) ? '' : 'Please fill in this field.');
+  return input.reportValidity();
+}
+
+function tell(message) {
+  clearTimeout(toastTimer);
+  toast.textContent = message;
+  toastTimer = setTimeout(() => { toast.textContent = ''; }, 3500);
+}
+
+function showItem(product, index = null) {
+  const item = index === null ? null : cart[index];
+  activeProduct = product;
+  editingIndex = index;
+  document.getElementById('item-title').textContent = product.label;
+  document.getElementById('item-description').textContent = 'Choose a quantity and your preferred cut.';
+  const select = itemForm.elements.cut;
+  select.replaceChildren(...product.cuts.map(cut => new Option(cut, cut)));
+  select.value = item?.cut ?? product.cuts[0];
+  itemForm.elements.quantity.value = item?.quantity ?? 1;
+  itemForm.elements.note.value = item?.note ?? '';
+  document.getElementById('item-submit').textContent = item ? 'Save changes' : 'Add to cart';
+  itemDialog.showModal();
+}
+
+function makeLineAction(label, attribute, index, productLabel) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.textContent = label;
+  button.setAttribute(attribute, index);
+  button.setAttribute('aria-label', label + ' ' + productLabel);
+  return button;
+}
+
+function renderCart() {
+  const total = cart.reduce((weight, item) => weight + item.quantity, 0);
+  document.querySelectorAll('[data-cart-count]').forEach(counter => { counter.textContent = cart.length; });
+  document.getElementById('cart-weight').textContent = total + ' kg';
+  document.getElementById('bulk-note').hidden = total < bulkMinimumKg;
+  whatsappParts.replaceChildren();
+  checkout.hidden = cart.length === 0;
+  cartItems.replaceChildren();
+  if (!cart.length) {
+    const empty = document.createElement('p');
+    empty.className = 'help';
+    empty.textContent = 'Your cart is empty. Add seafood from the catalogue to get started.';
+    cartItems.append(empty);
   }
-
-  hamburgerBtn.addEventListener('click', () => {
-    const isOpen = drawer.classList.contains('is-open');
-    if (isOpen) {
-      closeDrawer();
-      hamburgerBtn.focus();
-    } else {
-      openDrawer();
-    }
+  cart.forEach((item, index) => {
+    const product = products.get(item.id);
+    const row = document.createElement('div');
+    row.className = 'cart-line';
+    const details = document.createElement('div');
+    const name = document.createElement('strong');
+    name.textContent = product.label;
+    const description = document.createElement('p');
+    description.textContent = item.quantity + ' kg · ' + item.cut + (item.note ? '\n' + item.note : '');
+    details.append(name, description);
+    const actions = document.createElement('div');
+    actions.className = 'line-actions';
+    actions.append(makeLineAction('Edit', 'data-edit', index, product.label), makeLineAction('Remove', 'data-remove', index, product.label));
+    row.append(details, actions);
+    cartItems.append(row);
   });
+}
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      closeDrawer();
-      hamburgerBtn.focus();
+itemForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const quantity = itemForm.elements.quantity.valueAsNumber;
+  if (!activeProduct || !validQuantity(quantity)) return;
+  const line = {
+    id: activeProduct.id,
+    quantity,
+    cut: itemForm.elements.cut.value,
+    note: compact(itemForm.elements.note.value),
+  };
+  const isEdit = editingIndex !== null;
+  if (isEdit) {
+    cart[editingIndex] = line;
+  } else {
+    const matching = cart.find(item => item.id === line.id && item.cut === line.cut && item.note === line.note);
+    if (matching && validQuantity(matching.quantity + line.quantity)) matching.quantity += line.quantity;
+    else cart.push(line);
+    measure('add_to_cart', { items: [{ item_id: line.id, item_name: activeProduct.label, quantity }] }, 'AddToCart', {
+      content_ids: [line.id], content_type: 'product', contents: [{ id: line.id, quantity }],
     });
   }
+  saveCart();
+  itemDialog.close();
+  if (!isEdit) tell(activeProduct.label + ' added to your cart.');
+});
 
-  overlay.addEventListener('click', () => {
-    closeDrawer();
-    hamburgerBtn.focus();
-  });
-
-  // Tapping any link inside the drawer (nav links + WhatsApp CTA) closes it,
-  // letting the anchor's own navigation/smooth-scroll proceed normally.
-  drawerLinks.forEach((link) => {
-    link.addEventListener('click', closeDrawer);
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && drawer.classList.contains('is-open')) {
-      closeDrawer();
-      hamburgerBtn.focus();
-    }
-  });
-
-  // Minimal focus trap while the drawer is open
-  drawer.addEventListener('keydown', (event) => {
-    if (event.key !== 'Tab' || !drawer.classList.contains('is-open')) return;
-    const focusable = drawer.querySelectorAll('a[href], button:not([disabled])');
-    if (!focusable.length) return;
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
-  });
-}
-
-/* ============================================================================
-   04. SCROLL EFFECTS (header shadow/solid state, back-to-top, light parallax)
-   ============================================================================ */
-function initScrollEffects() {
-  const header = document.getElementById('siteHeader');
-  const backToTopBtn = document.getElementById('backToTopBtn');
-  const heroImage = document.querySelector('.hero-bg-image');
-  const hero = document.querySelector('.hero');
-
-  const HEADER_THRESHOLD = 60;
-  const BACK_TO_TOP_THRESHOLD = 480;
-  const PARALLAX_STRENGTH = 0.15;
-
-  let heroHeight = hero ? hero.offsetHeight : 0;
-  let ticking = false;
-
-  function update() {
-    const scrollY = window.scrollY;
-
-    if (header) {
-      header.classList.toggle('is-scrolled', scrollY > HEADER_THRESHOLD);
-    }
-    if (backToTopBtn) {
-      backToTopBtn.hidden = scrollY < BACK_TO_TOP_THRESHOLD;
-    }
-    if (heroImage && !prefersReducedMotion && scrollY < heroHeight) {
-      heroImage.style.transform = `translateY(${scrollY * PARALLAX_STRENGTH}px)`;
-    }
-    ticking = false;
-  }
-
-  function requestUpdate() {
-    if (!ticking) {
-      window.requestAnimationFrame(update);
-      ticking = true;
-    }
-  }
-
-  window.addEventListener('scroll', requestUpdate, { passive: true });
-  window.addEventListener('resize', () => {
-    heroHeight = hero ? hero.offsetHeight : 0;
-  }, { passive: true });
-
-  if (backToTopBtn) {
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-    });
-  }
-
-  update(); // set correct state immediately (e.g. on a mid-page reload)
-}
-
-/* ============================================================================
-   05. ACTIVE SECTION HIGHLIGHTING (SCROLLSPY)
-   ============================================================================ */
-function initActiveNavHighlight() {
-  const sections = document.querySelectorAll('main section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
-  if (!sections.length || !navLinks.length || !('IntersectionObserver' in window)) return;
-
-  function setActive(hash) {
-    navLinks.forEach((link) => {
-      link.classList.toggle('is-active', link.getAttribute('href') === hash);
-    });
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActive(`#${entry.target.id}`);
-        }
-      });
-    },
-    { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
-  );
-
-  sections.forEach((section) => observer.observe(section));
-}
-
-/* ============================================================================
-   06. SCROLL-REVEAL ANIMATIONS
-   ============================================================================
-   Classes are added here at runtime (not present in the static HTML), so
-   with JavaScript disabled every element simply renders at full opacity —
-   no broken/invisible content, just no entrance animation.
-*/
-function initScrollReveal() {
-  const revealMap = [
-    { selector: '.section-header', className: 'reveal' },
-    { selector: '.products-grid .product-card', className: 'reveal' },
-    { selector: '.products-note', className: 'reveal' },
-    { selector: '.values-grid .value-card', className: 'reveal' },
-    { selector: '.process-video-card', className: 'reveal-scale' },
-    { selector: '.process-timeline .process-step', className: 'reveal' },
-    { selector: '.faq-item', className: 'reveal' },
-    { selector: '.about-media', className: 'reveal-left' },
-    { selector: '.about-content', className: 'reveal-right' },
-    { selector: '.contact-info', className: 'reveal-left' },
-    { selector: '.contact-form-wrap', className: 'reveal-right' },
-    { selector: '.reviews-inner', className: 'reveal-scale' },
-    { selector: '.newsletter-inner', className: 'reveal-scale' },
-  ];
-
-  const elements = [];
-  revealMap.forEach(({ selector, className }) => {
-    document.querySelectorAll(selector).forEach((el) => {
-      el.classList.add(className);
-      elements.push(el);
-    });
-  });
-
-  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-    elements.forEach((el) => el.classList.add('is-visible'));
+itemDialog.addEventListener('close', () => {
+  if (editingIndex === null) {
+    returnFocusTo?.focus();
     return;
   }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
-  );
-
-  elements.forEach((el) => observer.observe(el));
-}
-
-/* ============================================================================
-   07. BUTTON RIPPLE MICRO-INTERACTION
-   ============================================================================ */
-function initButtonRipple() {
-  if (prefersReducedMotion) return;
-
-  document.addEventListener('click', (event) => {
-    const btn = event.target.closest('.btn');
-    if (!btn) return;
-
-    const rect = btn.getBoundingClientRect();
-    btn.style.setProperty('--ripple-x', `${event.clientX - rect.left}px`);
-    btn.style.setProperty('--ripple-y', `${event.clientY - rect.top}px`);
-
-    btn.classList.remove('is-rippling');
-    void btn.offsetWidth; // force reflow so the animation restarts on rapid clicks
-    btn.classList.add('is-rippling');
-
-    btn.addEventListener('animationend', () => btn.classList.remove('is-rippling'), { once: true });
-  });
-}
-
-/* ============================================================================
-   08. PRODUCT QUANTITY SELECTORS
-   ============================================================================ */
-function initQuantitySelectors() {
-  document.addEventListener('change', (event) => {
-    const select = event.target.closest('.qty-select');
-    if (!select) return;
-
-    const card = select.closest('.product-card');
-    if (!card) return;
-
-    const customField = card.querySelector('.custom-qty-field');
-    const customInput = customField ? customField.querySelector('input') : null;
-    const isCustom = select.value === 'custom';
-
-    if (customField) customField.hidden = !isCustom;
-    if (customInput) {
-      customInput.required = isCustom;
-      if (isCustom) customInput.focus();
-      else customInput.value = '';
-    }
-  });
-}
-
-/* ============================================================================
-   09. PRODUCT "ORDER ON WHATSAPP" BUTTONS
-   ============================================================================ */
-function buildOrderMessage(productName, quantity, notes) {
-  const lines = [
-    'Hi Hamza Ocean Seafood! I\u2019d like to place an order:',
-    '',
-    `Product: ${productName}`,
-    `Quantity: ${quantity}`,
-  ];
-  if (notes) {
-    lines.push(`Special Instructions: ${notes}`);
-  }
-  lines.push('', 'Please confirm availability and total price. Thank you!');
-  return lines.join('\n');
-}
-
-function initProductOrderButtons() {
-  document.addEventListener('click', (event) => {
-    const orderBtn = event.target.closest('.btn-order-whatsapp');
-    if (!orderBtn) return;
-
-    const card = orderBtn.closest('.product-card');
-    if (!card) return;
-
-    const productName = orderBtn.dataset.productName || card.querySelector('.product-name')?.textContent || 'Product';
-    const qtySelect = card.querySelector('[data-product-qty]');
-    const customInput = card.querySelector('[data-product-custom-qty]');
-    const notesField = card.querySelector('[data-product-notes]');
-
-    let quantity = '1 kg';
-    if (qtySelect) {
-      if (qtySelect.value === 'custom') {
-        if (customInput && !customInput.value.trim()) {
-          customInput.focus();
-          if (customInput.reportValidity) customInput.reportValidity();
-          return; // stop here — let the native validation bubble guide the user
-        }
-        quantity = `${customInput.value} kg`;
-      } else {
-        quantity = `${qtySelect.value} kg`;
-      }
-    }
-
-    const notes = notesField ? notesField.value.trim() : '';
-    const message = buildOrderMessage(productName, quantity, notes);
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-    window.open(url, '_blank', 'noopener,noreferrer');
-    trackEvent('whatsapp_order_click', { product_name: productName, quantity });
-  });
-}
-
-/* ============================================================================
-   09b. FAQ ACCORDION
-   ============================================================================ */
-function initFaqAccordion() {
-  const toggles = document.querySelectorAll('.faq-toggle');
-  if (!toggles.length) return;
-
-  toggles.forEach((toggle) => {
-    toggle.addEventListener('click', () => {
-      const item = toggle.closest('.faq-item');
-      const answer = document.getElementById(toggle.getAttribute('aria-controls'));
-      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-
-      // Close any other open item (remove this block for a multi-open accordion)
-      document.querySelectorAll('.faq-toggle[aria-expanded="true"]').forEach((openToggle) => {
-        if (openToggle !== toggle) {
-          openToggle.setAttribute('aria-expanded', 'false');
-          openToggle.closest('.faq-item')?.classList.remove('is-open');
-          const openAnswer = document.getElementById(openToggle.getAttribute('aria-controls'));
-          if (openAnswer) openAnswer.hidden = true;
-        }
-      });
-
-      toggle.setAttribute('aria-expanded', String(!isOpen));
-      item?.classList.toggle('is-open', !isOpen);
-      if (answer) answer.hidden = isOpen;
-    });
-  });
-}
-
-/* ============================================================================
-   10 & 11. FORMS — shared Web3Forms submit handler
-   ============================================================================ */
-async function submitToWeb3Forms(form, successEl, options) {
-  const opts = options || {};
-  const formData = new FormData(form);
-
-  // Honeypot: if a bot filled this hidden field, drop the submission quietly
-  if (formData.get('botcheck')) return;
-
-  if (opts.extraFields) {
-    Object.entries(opts.extraFields).forEach(([key, value]) => formData.append(key, value));
-  }
-
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const originalLabel = submitBtn ? submitBtn.textContent : '';
-  if (submitBtn) {
-    submitBtn.disabled = true;
-    submitBtn.textContent = opts.loadingLabel || 'Sending\u2026';
-  }
-
-  try {
-    const endpoint = form.getAttribute('action') || WEB3FORMS_ENDPOINT;
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: { Accept: 'application/json' },
-      body: formData,
-    });
-    const result = await response.json();
-
-    if (result.success) {
-      showFormMessage(successEl, opts.successMessage || 'Thank you!', false);
-      form.reset();
-      trackEvent(opts.eventName || 'form_submit', { form_id: form.id });
-    } else {
-      throw new Error(result.message || 'Submission failed.');
-    }
-  } catch (err) {
-    showFormMessage(
-      successEl,
-      opts.errorMessage || 'Something went wrong \u2014 please try again, or message us on WhatsApp.',
-      true
-    );
-  } finally {
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalLabel;
-    }
-  }
-}
-
-/* ---- 10. Contact form ---- */
-function initContactForm() {
-  const form = document.getElementById('contactForm');
-  const successEl = document.getElementById('formSuccessMessage');
-  if (!form) return;
-
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-    submitToWeb3Forms(form, successEl, {
-      successMessage: "Thank you! Your message has been sent \u2014 we'll get back to you shortly.",
-      eventName: 'contact_form_submit',
-    });
-  });
-}
-
-/* ---- 11. Newsletter form ----
-   The HTML newsletter form has no backend fields of its own, so the
-   access key / subject / from_name are appended here at submit time. */
-function initNewsletterForm() {
-  const form = document.getElementById('newsletterForm');
-  const successEl = document.getElementById('newsletterSuccess');
-  if (!form) return;
-
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-    submitToWeb3Forms(form, successEl, {
-      successMessage: "You're subscribed! Welcome to Hamza Ocean Seafood.",
-      loadingLabel: 'Subscribing\u2026',
-      eventName: 'newsletter_signup',
-      extraFields: {
-        access_key: WEB3FORMS_ACCESS_KEY,
-        subject: 'New Newsletter Subscriber \u2014 Hamza Ocean Seafood',
-        from_name: 'Hamza Ocean Seafood Newsletter',
-      },
-    });
-  });
-}
-
-/* ============================================================================
-   12. VIMEO VIDEO PLAYERS (hero background + process section)
-   ============================================================================
-   Both players share one lazily-loaded copy of the Vimeo Player SDK so it's
-   only fetched once even though two players use it. */
-let vimeoSDKPromise = null;
-
-/** Injects the Vimeo Player SDK <script> once and resolves when window.Vimeo is ready. */
-function loadVimeoSDK() {
-  if (vimeoSDKPromise) return vimeoSDKPromise;
-  vimeoSDKPromise = new Promise((resolve, reject) => {
-    if (window.Vimeo && window.Vimeo.Player) {
-      resolve(window.Vimeo);
-      return;
-    }
-    const script = document.createElement('script');
-    script.src = 'https://player.vimeo.com/api/player.js';
-    script.async = true;
-    script.onload = () => resolve(window.Vimeo);
-    script.onerror = () => reject(new Error('Failed to load Vimeo Player SDK'));
-    document.head.appendChild(script);
-  });
-  return vimeoSDKPromise;
-}
-
-/** Hero background video: muted autoplay loop, lazy-loaded once the hero
-    scrolls into view, with a sound toggle button and an image fallback that
-    stays visible (and takes over) if the video can't load or play. */
-function initHeroVideo() {
-  const heroSection = document.getElementById('home');
-  const videoWrap = document.getElementById('heroVideoWrap');
-  const fallbackImage = document.getElementById('heroFallbackImage');
-  const soundToggle = document.getElementById('heroSoundToggle');
-  if (!heroSection || !videoWrap || !HERO_VIMEO_VIDEO_ID || HERO_VIMEO_VIDEO_ID === 'HERO_VIMEO_VIDEO_ID') {
-    return; // no placeholder ID set yet — keep showing the static fallback image
-  }
-
-  let player = null;
-
-  const setupPlayer = () => {
-    loadVimeoSDK()
-      .then((Vimeo) => {
-        player = new Vimeo.Player(videoWrap, {
-          id: HERO_VIMEO_VIDEO_ID,
-          background: true, // strips Vimeo UI, forces muted + loop + autoplay
-          autoplay: true,
-          muted: true,
-          loop: true,
-          dnt: true,
-          // NOTE: deliberately no "responsive: true" here — it fights with
-          // background:true and makes Vimeo set its own inline iframe size,
-          // which is what caused the video to only fill the top-left corner.
-          // Sizing/cropping is handled entirely by the CSS on
-          // .hero-video-wrap iframe instead (see style.css).
-        });
-        player.ready().then(() => {
-          videoWrap.classList.add('is-ready');
-          if (fallbackImage) fallbackImage.style.opacity = '0';
-          if (soundToggle) soundToggle.hidden = false;
-        });
-      })
-      .catch(() => {
-        // SDK or video failed — the fallback image (still in the DOM) remains visible.
-      });
-  };
-
-  // Lazy-load: only start pulling the SDK/iframe once the hero is actually in view.
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setupPlayer();
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(heroSection);
-  } else {
-    setupPlayer();
-  }
-
-  if (soundToggle) {
-    soundToggle.addEventListener('click', () => {
-      if (!player) return;
-      const isMuted = soundToggle.getAttribute('aria-pressed') === 'false';
-      player.setMuted(!isMuted).then(() => {
-        soundToggle.setAttribute('aria-pressed', String(isMuted));
-        soundToggle.setAttribute('aria-label', isMuted ? 'Mute background video' : 'Unmute background video');
-        soundToggle.querySelector('.icon-muted').hidden = isMuted;
-        soundToggle.querySelector('.icon-unmuted').hidden = !isMuted;
-      });
-    });
-  }
-}
-
-/** Process section video: standard (non-background) Vimeo embed with fully
-    custom Play/Pause and Mute/Unmute buttons, built on the Vimeo Player SDK. */
-function initProcessVideo() {
-  const wrap = document.getElementById('processVideoWrap');
-  const controls = document.getElementById('processVideoControls');
-  const playPauseBtn = document.getElementById('processPlayPauseBtn');
-  const muteBtn = document.getElementById('processMuteBtn');
-  if (!wrap) return;
-
-  const videoId = wrap.dataset.vimeoId;
-  if (!videoId || videoId === 'PROCESS_VIMEO_VIDEO_ID') return; // placeholder not set yet
-
-  loadVimeoSDK()
-    .then((Vimeo) => {
-      const player = new Vimeo.Player(wrap, {
-        id: videoId,
-        muted: true,
-        loop: true,
-        controls: false, // we render our own controls below
-        dnt: true,
-      });
-
-      let isPlaying = false;
-      let isMuted = true;
-
-      player.ready().then(() => {
-        if (controls) controls.hidden = false;
-      });
-
-      if (playPauseBtn) {
-        playPauseBtn.addEventListener('click', () => {
-          const action = isPlaying ? player.pause() : player.play();
-          action.then(() => {
-            isPlaying = !isPlaying;
-            playPauseBtn.querySelector('.icon-play').hidden = isPlaying;
-            playPauseBtn.querySelector('.icon-pause').hidden = !isPlaying;
-            playPauseBtn.setAttribute('aria-label', isPlaying ? 'Pause video' : 'Play video');
-          });
-        });
-      }
-
-      if (muteBtn) {
-        muteBtn.addEventListener('click', () => {
-          player.setMuted(!isMuted).then(() => {
-            isMuted = !isMuted;
-            muteBtn.querySelector('.icon-muted').hidden = !isMuted;
-            muteBtn.querySelector('.icon-unmuted').hidden = isMuted;
-            muteBtn.setAttribute('aria-label', isMuted ? 'Unmute video' : 'Mute video');
-          });
-        });
-      }
-    })
-    .catch(() => {
-      // SDK/video failed to load — video-wrapper background stays black; no crash.
-    });
-}
-
-/* ============================================================================
-   13. BOOTSTRAP
-   ============================================================================ */
-document.addEventListener('DOMContentLoaded', () => {
-  initCurrentYear();
-  initMobileDrawer();
-  initScrollEffects();
-  initActiveNavHighlight();
-  initScrollReveal();
-  initButtonRipple();
-  initQuantitySelectors();
-  initProductOrderButtons();
-  initFaqAccordion();
-  initContactForm();
-  initNewsletterForm();
-  initHeroVideo();
-  initProcessVideo();
+  if (!cartDialog.open) cartDialog.showModal();
+  cartItems.querySelector('[data-edit="' + editingIndex + '"]')?.focus();
+  editingIndex = null;
 });
+
+cartDialog.addEventListener('close', () => {
+  if (!itemDialog.open) returnFocusTo?.focus();
+});
+
+checkout.elements.city.addEventListener('input', () => whatsappParts.replaceChildren());
+checkout.addEventListener('submit', event => {
+  event.preventDefault();
+  const city = checkout.elements.city;
+  if (!cart.length || !requiredText(city)) return;
+  const total = cart.reduce((sum, line) => sum + line.quantity, 0);
+  const lines = ['Hi Hamza Ocean Seafood! I’d like to request this order:', '', 'Delivery city: ' + compact(city.value)];
+  const itemLines = cart.map(line => {
+    const product = products.get(line.id);
+    return '• ' + product.label + ' — ' + line.quantity + ' kg, ' + line.cut + (line.note ? ' (' + line.note + ')' : '');
+  });
+  const tail = ['', 'Requested weight: ' + total + ' kg'];
+  if (total >= bulkMinimumKg) tail.push('Please include the bulk discount in the quote.');
+  tail.push('Please confirm availability, preparation, price and delivery. Thank you!');
+  const batches = [];
+  let current = [];
+  for (const line of itemLines) {
+    if (current.length && whatsappUrl([...lines, '', ...current, line, ...tail]).length > 3500) {
+      batches.push(current);
+      current = [];
+    }
+    current.push(line);
+  }
+  batches.push(current);
+  const eventParams = {
+    item_count: cart.length,
+    quantity: total + ' kg',
+    product_name: cart.length === 1 ? products.get(cart[0].id).label : 'Mixed seafood cart',
+    bulk_eligible: total >= bulkMinimumKg,
+  };
+  whatsappParts.replaceChildren();
+  if (batches.length === 1) {
+    openWhatsApp([...lines, '', ...batches[0], ...tail]);
+    measure('whatsapp_order_click', eventParams, 'Contact', { source: 'retail_cart' });
+  } else {
+    const description = document.createElement('p');
+    description.textContent = 'Your cart needs ' + batches.length + ' WhatsApp messages. Open and send each part.';
+    whatsappParts.append(description);
+    batches.forEach((batch, index) => {
+      const link = document.createElement('a');
+      link.className = 'button button-secondary';
+      link.href = whatsappUrl([...lines, 'Order part ' + (index + 1) + ' of ' + batches.length, '', ...batch, ...tail]);
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Open part ' + (index + 1);
+      link.dataset.contact = 'retail_cart_part';
+      link.addEventListener('click', () => {
+        if (index === 0) measure('whatsapp_order_click', eventParams, 'Contact', { source: 'retail_cart' });
+      });
+      whatsappParts.append(link);
+    });
+    whatsappParts.querySelector('a').focus();
+  }
+});
+
+const wholesale = document.getElementById('wholesale-form');
+wholesale?.elements.weight.addEventListener('input', () => {
+  const weight = wholesale.elements.weight;
+  document.getElementById('quote-bulk-note').hidden = !weight.validity.valid || weight.valueAsNumber < bulkMinimumKg;
+});
+wholesale?.addEventListener('submit', event => {
+  event.preventDefault();
+  const fields = wholesale.elements;
+  if (![fields.business, fields.city, fields.seafood].every(requiredText)) return;
+  const weight = fields.weight.valueAsNumber;
+  const lines = [
+    'Hi Hamza Ocean Seafood! I’d like a wholesale quote.',
+    '',
+    'Business: ' + compact(fields.business.value),
+    'Delivery city: ' + compact(fields.city.value),
+    'Seafood, cuts and grades: ' + compact(fields.seafood.value),
+    'Estimated total: ' + weight + ' kg',
+    'Frequency: ' + fields.frequency.value,
+  ];
+  if (fields.date.value) lines.push('Required by: ' + fields.date.value);
+  if (weight >= bulkMinimumKg) lines.push('Please include your bulk discount for this order.');
+  lines.push('', 'Please confirm availability, rates and delivery. Thank you!');
+  openWhatsApp(lines);
+  measure('wholesale_whatsapp_click', { quantity_kg: weight, bulk_eligible: weight >= bulkMinimumKg }, 'Contact', { source: 'wholesale_quote' });
+});
+
+document.querySelectorAll('form input, form textarea').forEach(input => {
+  input.addEventListener('input', () => input.setCustomValidity(''));
+});
+
+document.addEventListener('click', event => {
+  const closeButton = event.target.closest('[data-close]');
+  if (closeButton) closeButton.closest('dialog').close();
+
+  const add = event.target.closest('[data-add]');
+  if (add) {
+    returnFocusTo = add;
+    const product = products.get(add.dataset.add);
+    if (product) showItem(product);
+  }
+
+  const cartButton = event.target.closest('[data-show-cart]');
+  if (cartButton) {
+    returnFocusTo = cartButton;
+    cartDialog.showModal();
+  }
+
+  const edit = event.target.closest('[data-edit]');
+  if (edit) {
+    const index = Number(edit.dataset.edit);
+    const line = cart[index];
+    if (line) {
+      cartDialog.close();
+      showItem(products.get(line.id), index);
+    }
+  }
+
+  const remove = event.target.closest('[data-remove]');
+  if (remove) {
+    const index = Number(remove.dataset.remove);
+    const line = cart[index];
+    if (line) {
+      cart.splice(index, 1);
+      saveCart();
+      cartItems.querySelector('[data-remove="' + Math.min(index, cart.length - 1) + '"]')?.focus();
+      if (!cart.length) cartDialog.querySelector('[data-close]').focus();
+    }
+  }
+
+  const contact = event.target.closest('a[href^="https://wa.me/"]');
+  if (contact && contact.dataset.contact !== 'retail_cart_part') {
+    const source = contact.dataset.contact || 'general';
+    measure('whatsapp_contact_click', { source }, 'Contact', { source });
+  }
+});
+
+const menu = document.querySelector('.menu-toggle');
+const nav = document.getElementById('main-nav');
+function setMenu(open) {
+  menu.setAttribute('aria-expanded', String(open));
+  nav.classList.toggle('is-open', open);
+}
+menu.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
+nav.addEventListener('click', event => {
+  if (event.target.closest('a')) setMenu(false);
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') {
+    setMenu(false);
+    menu.focus();
+  }
+});
+
+const search = document.getElementById('catalogue-search');
+if (search) {
+  const filters = [...document.querySelectorAll('[data-filter]')];
+  const cards = [...document.querySelectorAll('#catalogue-grid .product-card')];
+  const results = document.getElementById('results-count');
+  const empty = document.getElementById('empty-results');
+  let category = 'All';
+  function applyFilters() {
+    const query = compact(search.value).toLowerCase();
+    let count = 0;
+    for (const card of cards) {
+      const matches = (category === 'All' || category === card.dataset.category) &&
+        query.split(' ').every(term => card.dataset.search.includes(term));
+      card.hidden = !matches;
+      if (matches) count++;
+    }
+    results.textContent = count + (count === 1 ? ' product' : ' products');
+    empty.hidden = count > 0;
+    for (const button of filters) button.setAttribute('aria-pressed', String(button.dataset.filter === category));
+  }
+  for (const button of filters) {
+    button.addEventListener('click', () => {
+      category = button.dataset.filter;
+      applyFilters();
+    });
+  }
+  search.addEventListener('input', applyFilters);
+  document.getElementById('reset-filters').addEventListener('click', () => {
+    category = 'All';
+    search.value = '';
+    applyFilters();
+    search.focus();
+  });
+}
+
+window.addEventListener('storage', event => {
+  if (event.key === storageKey || event.key === null) {
+    if (itemDialog.open) itemDialog.close();
+    cart = readCart();
+    renderCart();
+  }
+});
+
+document.querySelector('[data-year]').textContent = new Date().getFullYear();
+renderCart();
+initMetaPixel();

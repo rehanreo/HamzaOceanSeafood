@@ -1,0 +1,249 @@
+{
+  "business": {
+    "whatsapp": "923710359521",
+    "email": "hamzaseafood07@gmail.com",
+    "analyticsId": "G-JGS17XB776",
+    "metaPixelId": "YOUR_META_PIXEL_ID",
+    "secondaryWhatsapp": "923350213648",
+    "bulkMinimumKg": 20
+  },
+  "products": [
+    {
+      "id": "indian-mackerel",
+      "name": "Indian Mackerel",
+      "local": "Bangra",
+      "category": "Small fish",
+      "image": "indian-mackerel.webp",
+      "cuts": "whole",
+      "description": "Ask about the current catch and whole-fish sizes.",
+      "fact": "Provides protein and omega-3 fats.",
+      "source": "https://fishbase.se/Nutrients/NutrientsSummary.php?GenusName=Rastrelliger&ID=111&SpeciesName=kanagurta&nutID=393"
+    },
+    {
+      "id": "dothar",
+      "name": "Dothar",
+      "local": "",
+      "category": "Fish",
+      "image": "dothar.webp",
+      "cuts": "whole",
+      "description": "Request today’s availability and preparation options.",
+      "fact": "Fish provides dietary protein.",
+      "source": "https://www.fao.org/4/cc0461en/online/sofia/2022/consumption-of-aquatic-foods.html"
+    },
+    {
+      "id": "grouper",
+      "name": "Grouper",
+      "local": "Giser",
+      "category": "Fish",
+      "image": "grouper.webp",
+      "cuts": "large",
+      "description": "Ask about whole fish, steaks or fillets.",
+      "fact": "Fish provides dietary protein.",
+      "source": "https://www.fao.org/4/cc0461en/online/sofia/2022/consumption-of-aquatic-foods.html"
+    },
+    {
+      "id": "dandia",
+      "name": "Dandia",
+      "local": "",
+      "category": "Fish",
+      "image": "dandia.webp",
+      "cuts": "whole",
+      "description": "Request today’s availability and preparation options.",
+      "fact": "Fish provides dietary protein.",
+      "source": "https://www.fao.org/4/cc0461en/online/sofia/2022/consumption-of-aquatic-foods.html"
+    },
+    {
+      "id": "saram",
+      "name": "Saram",
+      "local": "",
+      "category": "Fish",
+      "image": "saram.webp",
+      "cuts": "whole",
+      "description": "Request today’s availability and preparation options.",
+      "fact": "Fish provides dietary protein.",
+      "source": "https://www.fao.org/4/cc0461en/online/sofia/2022/consumption-of-aquatic-foods.html"
+    },
+    {
+      "id": "white-barracuda",
+      "name": "White Barracuda",
+      "local": "Safed Kund",
+      "category": "Fish",
+      "image": "white-barracuda.webp",
+      "cuts": "large",
+      "description": "Ask us about size grades and portions.",
+      "fact": "Fish provides dietary protein.",
+      "source": "https://www.fao.org/4/cc0461en/online/sofia/2022/consumption-of-aquatic-foods.html"
+    },
+    {
+      "id": "kanarcha",
+      "name": "Red Snapper",
+      "local": "Kanarcha",
+      "category": "Fish",
+      "image": "kanarcha.webp",
+      "cuts": "large",
+      "description": "Ask about today’s sizes and available cuts.",
+      "identitySource": "https://www.fao.org/4/r7066e/r7066e13.pdf",
+      "fact": "Fish provides dietary protein.",
+      "source": "https://www.fao.org/4/cc0461en/online/sofia/2022/consumption-of-aquatic-foods.html"
+    },
+    {
+      "id": "anchovies",
+      "name": "Anchovies",
+      "local": "",
+      "category": "Small fish",
+      "image": "anchovies.webp",
+      "cuts": "whole",
+      "description": "Small fish with a distinctive, savoury flavour.",
+      "fact": "Anchovies provide protein and omega-3 fats.",
+      "source": "https://www.ars.usda.gov/ARSUserFiles/80400535/Data/SR/SR28/reports/sr28fg15.pdf"
+    },
+    {
+      "id": "sardines",
+      "name": "Sardines",
+      "local": "",
+      "category": "Small fish",
+      "image": "sardines.webp",
+      "cuts": "whole",
+      "description": "Small fish for grilling or masala fry.",
+      "fact": "Provide the omega-3 fats EPA and DHA.",
+      "source": "https://ods.od.nih.gov/factsheets/Omega3FattyAcids-HealthProfessional/"
+    },
+    {
+      "id": "black-barracuda",
+      "name": "Black Barracuda",
+      "local": "Kala Kund",
+      "category": "Fish",
+      "image": "black-barracuda.webp",
+      "cuts": "large",
+      "description": "Ask us about size grades and portions.",
+      "photoSource": "https://commons.wikimedia.org/wiki/File:Military_Barracuda_imported_from_iNaturalist_photo_18012051_on_1_February_2023.jpg",
+      "photoCredit": "Nasser Halaweh",
+      "photoLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "photoChanges": "Background restyled with AI.",
+      "photoContext": "Sawtooth barracuda reference photo.",
+      "fact": "Fish provides dietary protein.",
+      "source": "https://www.fao.org/4/cc0461en/online/sofia/2022/consumption-of-aquatic-foods.html"
+    },
+    {
+      "id": "queenfish",
+      "name": "Queenfish",
+      "local": "",
+      "category": "Fish",
+      "image": "",
+      "cuts": "large",
+      "description": "Ask about available sizes and preparations.",
+      "fact": "Fish provides dietary protein.",
+      "source": "https://www.fao.org/4/cc0461en/online/sofia/2022/consumption-of-aquatic-foods.html"
+    },
+    {
+      "id": "mushka",
+      "name": "Croaker",
+      "local": "Mushka",
+      "category": "Fish",
+      "image": "",
+      "cuts": "whole",
+      "description": "Request whole cleaned fish or ask what cuts are available.",
+      "fact": "Fish provides dietary protein.",
+      "source": "https://www.fao.org/4/cc0461en/online/sofia/2022/consumption-of-aquatic-foods.html"
+    },
+    {
+      "id": "red-snapper",
+      "name": "Red Snapper",
+      "local": "Heera",
+      "category": "Fish",
+      "image": "red-snapper.webp",
+      "cuts": "large",
+      "description": "Mild, firm fish for grilling, frying, or a whole roast.",
+      "fact": "Provides protein.",
+      "source": "https://www.fao.org/4/cc0461en/online/sofia/2022/consumption-of-aquatic-foods.html"
+    },
+    {
+      "id": "king-fish",
+      "name": "King Fish",
+      "local": "Surmai",
+      "category": "Fish",
+      "image": "king-fish.webp",
+      "cuts": "large",
+      "description": "Meaty fish for pan-fried steaks or curry.",
+      "fact": "Fish provides dietary protein.",
+      "source": "https://www.fao.org/4/cc0461en/online/sofia/2022/consumption-of-aquatic-foods.html"
+    },
+    {
+      "id": "white-pomfret",
+      "name": "White Pomfret",
+      "local": "Safed Paplet",
+      "category": "Fish",
+      "image": "white-pomfret.webp",
+      "cuts": "whole",
+      "description": "Delicate flesh for whole roasting or pan-frying.",
+      "fact": "Fish provides dietary protein.",
+      "source": "https://www.fao.org/4/cc0461en/online/sofia/2022/consumption-of-aquatic-foods.html"
+    },
+    {
+      "id": "black-pomfret",
+      "name": "Black Pomfret",
+      "local": "Kala Paplet",
+      "category": "Fish",
+      "image": "black-pomfret.webp",
+      "cuts": "whole",
+      "description": "A firm fish for masala fry or grilling.",
+      "fact": "Fish provides dietary protein.",
+      "source": "https://www.fao.org/4/cc0461en/online/sofia/2022/consumption-of-aquatic-foods.html"
+    },
+    {
+      "id": "tuna",
+      "name": "Tuna",
+      "local": "Dawan",
+      "category": "Fish",
+      "image": "tuna.webp",
+      "cuts": "large",
+      "description": "Meaty cuts for grilling or a hearty curry.",
+      "fact": "Tuna provides protein.",
+      "source": "https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/nutrition-information-cooked-seafood-purchased-raw"
+    },
+    {
+      "id": "indian-salmon",
+      "name": "Indian Salmon",
+      "local": "Rawas",
+      "category": "Fish",
+      "image": "",
+      "cuts": "large",
+      "description": "Ask about the current catch and available cuts.",
+      "fact": "Fish provides dietary protein.",
+      "source": "https://www.fao.org/4/cc0461en/online/sofia/2022/consumption-of-aquatic-foods.html"
+    },
+    {
+      "id": "tiger-prawns",
+      "name": "Tiger Prawns",
+      "local": "",
+      "category": "Prawns",
+      "image": "tiger-prawns.webp",
+      "cuts": "prawns",
+      "description": "Larger prawns for grilling or seafood platters.",
+      "fact": "Prawns provide protein and selenium.",
+      "source": "https://www.health.com/nutrition/calories-in-shrimp"
+    },
+    {
+      "id": "medium-prawns",
+      "name": "Medium Prawns",
+      "local": "Jeera",
+      "category": "Prawns",
+      "image": "medium-prawns.webp",
+      "cuts": "prawns",
+      "description": "A versatile size for curries and biryani.",
+      "fact": "Prawns provide protein and vitamin B12.",
+      "source": "https://www.health.com/nutrition/calories-in-shrimp"
+    },
+    {
+      "id": "small-prawns",
+      "name": "Small Prawns",
+      "local": "",
+      "category": "Prawns",
+      "image": "small-prawns.webp",
+      "cuts": "prawns",
+      "description": "Bite-sized prawns for pulao and stir-fries.",
+      "fact": "Prawns provide selenium and vitamin B12.",
+      "source": "https://www.health.com/nutrition/calories-in-shrimp"
+    }
+  ]
+}
