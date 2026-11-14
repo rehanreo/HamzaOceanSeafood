@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" role="img"><title>Fish pieces for curry</title><defs>
+<pattern id="grain" width="110" height="34" patternUnits="userSpaceOnUse">
+<path d="M0 1h110M0 27c19-10 34 3 52-1s40-13 58-8M0 13c20 3 39-9 68-6s28 9 42 8" stroke="#d09562" fill="none" opacity=".18"/>
+</pattern>
+<linearGradient id="flesh" x2="0" y2="1"><stop stop-color="#f0b69f"/><stop offset="1" stop-color="#be6e5b"/></linearGradient>
+<linearGradient id="skin" x2="0" y2="1"><stop stop-color="#395466"/><stop offset=".57" stop-color="#99a9aa"/><stop offset="1" stop-color="#dce1d9"/></linearGradient>
+</defs>
+<path fill="#59382a" d="M0 0h560v340H0z"/><path fill="url(#grain)" d="M0 0h560v340H0z"/>
+<rect x="62" y="44" width="438" height="262" rx="48" fill="#1d110d" opacity=".33"/>
+<rect x="61" y="36" width="438" height="262" rx="46" fill="#fcfaf3" stroke="#d1c6b5" stroke-width="4"/>
+<rect x="81" y="57" width="398" height="220" rx="33" fill="#f1eee5" stroke="#e5ded0" stroke-width="2"/><g transform="translate(176 122) rotate(10)"><path d="M-45-18l31-18 57 20 5 28-36 26-51-19Z" fill="url(#flesh)" stroke="#9c6556" stroke-width="3"/>
+<path d="M-45-18l53 20 35-18M8 2l4 36" fill="none" stroke="#f4cbb7" stroke-width="3"/></g><g transform="translate(277 117) rotate(-15)"><path d="M-45-18l31-18 57 20 5 28-36 26-51-19Z" fill="url(#flesh)" stroke="#9c6556" stroke-width="3"/>
+<path d="M-45-18l53 20 35-18M8 2l4 36" fill="none" stroke="#f4cbb7" stroke-width="3"/></g><g transform="translate(380 132) rotate(12)"><path d="M-45-18l31-18 57 20 5 28-36 26-51-19Z" fill="url(#flesh)" stroke="#9c6556" stroke-width="3"/>
+<path d="M-45-18l53 20 35-18M8 2l4 36" fill="none" stroke="#f4cbb7" stroke-width="3"/></g><g transform="translate(170 203) rotate(-14)"><path d="M-45-18l31-18 57 20 5 28-36 26-51-19Z" fill="url(#flesh)" stroke="#9c6556" stroke-width="3"/>
+<path d="M-45-18l53 20 35-18M8 2l4 36" fill="none" stroke="#f4cbb7" stroke-width="3"/></g><g transform="translate(275 205) rotate(9)"><path d="M-45-18l31-18 57 20 5 28-36 26-51-19Z" fill="url(#flesh)" stroke="#9c6556" stroke-width="3"/>
+<path d="M-45-18l53 20 35-18M8 2l4 36" fill="none" stroke="#f4cbb7" stroke-width="3"/></g><g transform="translate(381 211) rotate(-19)"><path d="M-45-18l31-18 57 20 5 28-36 26-51-19Z" fill="url(#flesh)" stroke="#9c6556" stroke-width="3"/>
+<path d="M-45-18l53 20 35-18M8 2l4 36" fill="none" stroke="#f4cbb7" stroke-width="3"/></g></svg>

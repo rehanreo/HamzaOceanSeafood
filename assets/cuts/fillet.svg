@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" role="img"><title>Boneless fish fillets</title><defs>
+<pattern id="grain" width="110" height="34" patternUnits="userSpaceOnUse">
+<path d="M0 1h110M0 27c19-10 34 3 52-1s40-13 58-8M0 13c20 3 39-9 68-6s28 9 42 8" stroke="#d09562" fill="none" opacity=".18"/>
+</pattern>
+<linearGradient id="flesh" x2="0" y2="1"><stop stop-color="#f0b69f"/><stop offset="1" stop-color="#be6e5b"/></linearGradient>
+<linearGradient id="skin" x2="0" y2="1"><stop stop-color="#395466"/><stop offset=".57" stop-color="#99a9aa"/><stop offset="1" stop-color="#dce1d9"/></linearGradient>
+</defs>
+<path fill="#59382a" d="M0 0h560v340H0z"/><path fill="url(#grain)" d="M0 0h560v340H0z"/>
+<rect x="62" y="44" width="438" height="262" rx="48" fill="#1d110d" opacity=".33"/>
+<rect x="61" y="36" width="438" height="262" rx="46" fill="#fcfaf3" stroke="#d1c6b5" stroke-width="4"/>
+<rect x="81" y="57" width="398" height="220" rx="33" fill="#f1eee5" stroke="#e5ded0" stroke-width="2"/><g fill="url(#flesh)" stroke="#a76055" stroke-width="3">
+<path d="M115 136c27-47 104-53 175-37 46 10 96 21 152 15-46 35-105 54-162 58-70 5-132-5-165-36Z"/>
+<path d="M134 211c28-44 101-54 171-42 46 8 90 19 128 17-35 28-93 52-150 58-68 7-124-5-149-33Z"/></g>
+<path d="M148 134c64 8 144 13 238-6m-226 82c68 7 140 4 223-14" stroke="#f5d5c3" stroke-width="4" fill="none"/></svg>

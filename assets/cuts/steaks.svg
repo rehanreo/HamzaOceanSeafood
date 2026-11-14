@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" role="img"><title>Bone-in fish steaks</title><defs>
+<pattern id="grain" width="110" height="34" patternUnits="userSpaceOnUse">
+<path d="M0 1h110M0 27c19-10 34 3 52-1s40-13 58-8M0 13c20 3 39-9 68-6s28 9 42 8" stroke="#d09562" fill="none" opacity=".18"/>
+</pattern>
+<linearGradient id="flesh" x2="0" y2="1"><stop stop-color="#f0b69f"/><stop offset="1" stop-color="#be6e5b"/></linearGradient>
+<linearGradient id="skin" x2="0" y2="1"><stop stop-color="#395466"/><stop offset=".57" stop-color="#99a9aa"/><stop offset="1" stop-color="#dce1d9"/></linearGradient>
+</defs>
+<path fill="#59382a" d="M0 0h560v340H0z"/><path fill="url(#grain)" d="M0 0h560v340H0z"/>
+<rect x="62" y="44" width="438" height="262" rx="48" fill="#1d110d" opacity=".33"/>
+<rect x="61" y="36" width="438" height="262" rx="46" fill="#fcfaf3" stroke="#d1c6b5" stroke-width="4"/>
+<rect x="81" y="57" width="398" height="220" rx="33" fill="#f1eee5" stroke="#e5ded0" stroke-width="2"/><g transform="translate(195 151) rotate(-18)"><path d="M-67-4C-70-44-44-60 0-48c44-12 70 4 67 44C64 23 31 43 0 58-31 43-64 23-67-4Z" fill="url(#flesh)" stroke="#476070" stroke-width="6"/>
+<path d="M0-35v73M-48-17c16 3 30 8 48 22 18-14 32-19 48-22M-36 18C-21 15-8 20 0 27c8-7 21-12 36-9" fill="none" stroke="#f6d6c5" stroke-width="4" stroke-linecap="round"/>
+<circle cx="0" cy="4" r="11" fill="#f8e4cf" stroke="#ae7766" stroke-width="2"/></g><g transform="translate(350 157) rotate(12)"><path d="M-67-4C-70-44-44-60 0-48c44-12 70 4 67 44C64 23 31 43 0 58-31 43-64 23-67-4Z" fill="url(#flesh)" stroke="#476070" stroke-width="6"/>
+<path d="M0-35v73M-48-17c16 3 30 8 48 22 18-14 32-19 48-22M-36 18C-21 15-8 20 0 27c8-7 21-12 36-9" fill="none" stroke="#f6d6c5" stroke-width="4" stroke-linecap="round"/>
+<circle cx="0" cy="4" r="11" fill="#f8e4cf" stroke="#ae7766" stroke-width="2"/></g><g transform="translate(269 205) rotate(6)"><path d="M-67-4C-70-44-44-60 0-48c44-12 70 4 67 44C64 23 31 43 0 58-31 43-64 23-67-4Z" fill="url(#flesh)" stroke="#476070" stroke-width="6"/>
+<path d="M0-35v73M-48-17c16 3 30 8 48 22 18-14 32-19 48-22M-36 18C-21 15-8 20 0 27c8-7 21-12 36-9" fill="none" stroke="#f6d6c5" stroke-width="4" stroke-linecap="round"/>
+<circle cx="0" cy="4" r="11" fill="#f8e4cf" stroke="#ae7766" stroke-width="2"/></g></svg>

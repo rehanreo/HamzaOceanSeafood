@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" role="img"><title>Peeled and deveined prawns</title><defs>
+<pattern id="grain" width="110" height="34" patternUnits="userSpaceOnUse">
+<path d="M0 1h110M0 27c19-10 34 3 52-1s40-13 58-8M0 13c20 3 39-9 68-6s28 9 42 8" stroke="#d09562" fill="none" opacity=".18"/>
+</pattern>
+<linearGradient id="flesh" x2="0" y2="1"><stop stop-color="#f0b69f"/><stop offset="1" stop-color="#be6e5b"/></linearGradient>
+<linearGradient id="skin" x2="0" y2="1"><stop stop-color="#395466"/><stop offset=".57" stop-color="#99a9aa"/><stop offset="1" stop-color="#dce1d9"/></linearGradient>
+</defs>
+<path fill="#59382a" d="M0 0h560v340H0z"/><path fill="url(#grain)" d="M0 0h560v340H0z"/>
+<rect x="62" y="44" width="438" height="262" rx="48" fill="#1d110d" opacity=".33"/>
+<rect x="61" y="36" width="438" height="262" rx="46" fill="#fcfaf3" stroke="#d1c6b5" stroke-width="4"/>
+<rect x="81" y="57" width="398" height="220" rx="33" fill="#f1eee5" stroke="#e5ded0" stroke-width="2"/><g transform="translate(172 122) rotate(10)"><path d="M37-15C12-41-21-32-32-11-42 11-22 27-2 19l-4-11c-9 4-19 0-18-10 0-14 23-20 41-7l11 8Z" fill="url(#flesh)" stroke="#a76154" stroke-width="3"/>
+<path d="M36-15l17-10-5 14 9 9-27 2M17-24l-7 13M0-29l-4 13m-16-9 2 14m-11-3 6 8m-9 8 10 2" fill="none" stroke="#aa6556" stroke-width="3" stroke-linecap="round"/></g><g transform="translate(284 111) rotate(12)"><path d="M37-15C12-41-21-32-32-11-42 11-22 27-2 19l-4-11c-9 4-19 0-18-10 0-14 23-20 41-7l11 8Z" fill="url(#flesh)" stroke="#a76154" stroke-width="3"/>
+<path d="M36-15l17-10-5 14 9 9-27 2M17-24l-7 13M0-29l-4 13m-16-9 2 14m-11-3 6 8m-9 8 10 2" fill="none" stroke="#aa6556" stroke-width="3" stroke-linecap="round"/></g><g transform="translate(385 144) rotate(17)"><path d="M37-15C12-41-21-32-32-11-42 11-22 27-2 19l-4-11c-9 4-19 0-18-10 0-14 23-20 41-7l11 8Z" fill="url(#flesh)" stroke="#a76154" stroke-width="3"/>
+<path d="M36-15l17-10-5 14 9 9-27 2M17-24l-7 13M0-29l-4 13m-16-9 2 14m-11-3 6 8m-9 8 10 2" fill="none" stroke="#aa6556" stroke-width="3" stroke-linecap="round"/></g><g transform="translate(174 205) rotate(-18)"><path d="M37-15C12-41-21-32-32-11-42 11-22 27-2 19l-4-11c-9 4-19 0-18-10 0-14 23-20 41-7l11 8Z" fill="url(#flesh)" stroke="#a76154" stroke-width="3"/>
+<path d="M36-15l17-10-5 14 9 9-27 2M17-24l-7 13M0-29l-4 13m-16-9 2 14m-11-3 6 8m-9 8 10 2" fill="none" stroke="#aa6556" stroke-width="3" stroke-linecap="round"/></g><g transform="translate(282 204) rotate(9)"><path d="M37-15C12-41-21-32-32-11-42 11-22 27-2 19l-4-11c-9 4-19 0-18-10 0-14 23-20 41-7l11 8Z" fill="url(#flesh)" stroke="#a76154" stroke-width="3"/>
+<path d="M36-15l17-10-5 14 9 9-27 2M17-24l-7 13M0-29l-4 13m-16-9 2 14m-11-3 6 8m-9 8 10 2" fill="none" stroke="#aa6556" stroke-width="3" stroke-linecap="round"/></g><g transform="translate(390 217) rotate(10)"><path d="M37-15C12-41-21-32-32-11-42 11-22 27-2 19l-4-11c-9 4-19 0-18-10 0-14 23-20 41-7l11 8Z" fill="url(#flesh)" stroke="#a76154" stroke-width="3"/>
+<path d="M36-15l17-10-5 14 9 9-27 2M17-24l-7 13M0-29l-4 13m-16-9 2 14m-11-3 6 8m-9 8 10 2" fill="none" stroke="#aa6556" stroke-width="3" stroke-linecap="round"/></g></svg>

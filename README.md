@@ -1,25 +1,22 @@
 # Hamza Ocean Seafood
 
-## Deploy to GitHub Pages
+## Publish
 
-1. Extract the ZIP. Put its contents at the root of the existing HamzaOceanSeafood repository or in the existing Pages publishing folder if you use one. The site needs no build step to deploy.
-2. Commit and push to the existing Pages branch. Keep the current repository name and Pages source settings to retain the public URL.
-3. Open the published home, catalogue, cutting guide, and wholesale pages. Check the WhatsApp draft on a phone and confirm Google Analytics receives events in the existing property.
+1. Extract this ZIP into the same GitHub Pages publishing folder you used for the previous website. Upload its contents, including `.nojekyll`.
+2. Replace matching files. Keep your existing Pages branch and settings. The previous `cutting-guide/index.html` is now a redirect, so replace it as well.
+3. After deployment, check the homepage video, catalogue, wholesale page, and contact form on the published URL.
 
-To preview locally, run `python3 -m http.server 8000` from the extracted folder and open `http://localhost:8000`.
+The site has three pages: Home, Products (with the cutting guide), and Wholesale. The ZIP already contains the generated HTML and needs no build step for publishing. To preview locally, run `python3 -m http.server 8000` in the extracted folder and open `http://localhost:8000`.
 
-## Update products or settings
+## Updating the site
 
-Edit `catalogue.json`. The order of the products in the file is the order shown in the catalogue. Use a unique product ID, keep the category set to Fish, Small fish, or Prawns, and put new catalogue photos in `assets/catalogue/`. Leave the image field empty when a verified photo is unavailable. Run `python3 tools/build.py` and commit the changed JSON, assets, and generated HTML together.
+- Edit `catalogue.json` to update seafood, photos, contact numbers and analytics. Add catalogue photos to `assets/catalogue/`. Use an empty image field when a confirmed photo is unavailable.
+- Homepage, header, and footer copy is in `tools/templates/`. Run `python3 tools/build.py` after editing the templates or catalogue, then commit the regenerated HTML, changed source, and assets.
+- The hero uses the original Vimeo ocean video and shows its original image first. It keeps the image when background playback is unavailable. The process video is embedded with Vimeo's playback controls and has a direct link.
+- The WhatsApp cart and wholesale quote direct customers to +92 371 0359521. The Contact section also lists +92 335 0213648. Bulk discounts apply from 20 kg.
+- The site retains GA4 measurement ID `G-JGS17XB776`. To enable Meta Pixel, replace `YOUR_META_PIXEL_ID` with your numeric ID in `catalogue.json` and rebuild. Analytics loads on the production origin. WhatsApp events track opening a draft.
+- The contact form uses the original Web3Forms integration. Check delivery to your inbox after deployment.
 
-The cart and quote form prepare WhatsApp drafts for +92 371 0359521. Customers send the drafts from WhatsApp. The secondary number appears in Contact. The discount starts at 20 kg of requested seafood. Rates and delivery are confirmed in chat.
+## Product photos
 
-## Analytics
-
-The site retains GA4 measurement ID `G-JGS17XB776` and the `whatsapp_order_click` event. Wholesale handoffs are recorded as `wholesale_whatsapp_click`. The site measures WhatsApp handoffs. It cannot see whether a visitor sent the draft or completed a purchase.
-
-Replace `YOUR_META_PIXEL_ID` in `catalogue.json` with the numeric ID and rerun the builder to activate Meta Pixel. Check PageView, AddToCart and Contact in Meta Events Manager after publishing. Analytics loads on the existing production origin. If you later change domains, update the canonical homepage URL in `tools/build.py` and rebuild.
-
-## Product images
-
-The supplied catalogue photos were restyled for a consistent background. Black Barracuda uses an AI-restyled [reference photo by Nasser Halaweh](https://commons.wikimedia.org/wiki/File:Military_Barracuda_imported_from_iNaturalist_photo_18012051_on_1_February_2023.jpg), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The cutting-guide photos illustrate the available preparation styles. Queenfish, Mushka and Indian Salmon (Rawas) are listed with photos on request. Kanarcha is shown as a red snapper market name based on the [FAO Pakistan fisheries field guide](https://www.fao.org/4/r7066e/r7066e13.pdf).
+The product cards use original photos from the brand or supplied for this catalogue, resized for the web. The Rawas card uses the newly supplied Indian Salmon photo. The Black Barracuda card uses a resized [reference photo by Nasser Halaweh](https://commons.wikimedia.org/wiki/File:Military_Barracuda_imported_from_iNaturalist_photo_18012051_on_1_February_2023.jpg), licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Queenfish and Mushka are listed with photos on request. The cutting guide uses diagrams.

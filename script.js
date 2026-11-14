@@ -118,7 +118,10 @@ function makeLineAction(label, attribute, index, productLabel) {
 
 function renderCart() {
   const total = cart.reduce((weight, item) => weight + item.quantity, 0);
-  document.querySelectorAll('[data-cart-count]').forEach(counter => { counter.textContent = cart.length; });
+  for (const counter of document.querySelectorAll('[data-cart-count]')) {
+    counter.textContent = cart.length;
+    counter.closest('button').setAttribute('aria-label', 'Cart, ' + cart.length + (cart.length === 1 ? ' item' : ' items'));
+  }
   document.getElementById('cart-weight').textContent = total + ' kg';
   document.getElementById('bulk-note').hidden = total < bulkMinimumKg;
   whatsappParts.replaceChildren();
@@ -275,6 +278,12 @@ document.querySelectorAll('form input, form textarea').forEach(input => {
 
 document.addEventListener('click', event => {
   const closeButton = event.target.closest('[data-close]');
+  const guideLink = event.target.closest('#item-dialog a[href$="#cutting-guide"]');
+  if (guideLink) {
+    editingIndex = null;
+    returnFocusTo = null;
+    itemDialog.close();
+  }
   if (closeButton) closeButton.closest('dialog').close();
 
   const add = event.target.closest('[data-add]');
@@ -319,22 +328,215 @@ document.addEventListener('click', event => {
   }
 });
 
-const menu = document.querySelector('.menu-toggle');
-const nav = document.getElementById('main-nav');
-function setMenu(open) {
-  menu.setAttribute('aria-expanded', String(open));
-  nav.classList.toggle('is-open', open);
-}
-menu.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
-nav.addEventListener('click', event => {
-  if (event.target.closest('a')) setMenu(false);
-});
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') {
-    setMenu(false);
-    menu.focus();
+function initMobileDrawer() {
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const drawer = document.getElementById('mobileDrawer');
+  const overlay = document.getElementById('drawerOverlay');
+  const closeBtn = document.getElementById('drawerCloseBtn');
+
+  if (!hamburgerBtn || !drawer || !overlay) return;
+
+  const drawerLinks = drawer.querySelectorAll('a');
+
+  function openDrawer() {
+    drawer.classList.add('is-open');
+    drawer.inert = false;
+    drawer.setAttribute('aria-hidden', 'false');
+    overlay.hidden = false;
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
+    document.documentElement.classList.add('no-scroll');
+    if (closeBtn) closeBtn.focus();
   }
-});
+
+  function closeDrawer() {
+    drawer.classList.remove('is-open');
+    if (drawer.contains(document.activeElement)) hamburgerBtn.focus();
+    drawer.inert = true;
+    drawer.setAttribute('aria-hidden', 'true');
+    overlay.hidden = true;
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    document.documentElement.classList.remove('no-scroll');
+  }
+
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = drawer.classList.contains('is-open');
+    if (isOpen) {
+      closeDrawer();
+      hamburgerBtn.focus();
+    } else {
+      openDrawer();
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      closeDrawer();
+      hamburgerBtn.focus();
+    });
+  }
+
+  overlay.addEventListener('click', () => {
+    closeDrawer();
+    hamburgerBtn.focus();
+  });
+
+  // Tapping any link inside the drawer (nav links + WhatsApp CTA) closes it,
+  // letting the anchor's own navigation/smooth-scroll proceed normally.
+  drawerLinks.forEach((link) => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && drawer.classList.contains('is-open')) {
+      closeDrawer();
+      hamburgerBtn.focus();
+    }
+  });
+
+  const desktop = window.matchMedia('(min-width: 1024px)');
+  desktop.addEventListener('change', event => {
+    if (event.matches && drawer.classList.contains('is-open')) closeDrawer();
+  });
+
+  // Keep tab focus inside the open drawer.
+  drawer.addEventListener('keydown', (event) => {
+    if (event.key !== 'Tab' || !drawer.classList.contains('is-open')) return;
+    const focusable = drawer.querySelectorAll('a[href], button:not([disabled])');
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+}
+
+function initHeader() {
+  const header = document.getElementById('siteHeader');
+  const hero = document.getElementById('home');
+  const update = () => header.classList.toggle('is-scrolled', !hero || window.scrollY > 60);
+  if (hero) window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
+function initHeroVideo() {
+  const wrap = document.getElementById('heroVideoWrap');
+  const toggle = document.getElementById('heroMotionToggle');
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const connection = navigator.connection;
+  if (!wrap || motion.matches || connection?.saveData || ['slow-2g', '2g', '3g'].includes(connection?.effectiveType)) return;
+
+  const sdk = document.createElement('script');
+  sdk.src = 'https://player.vimeo.com/api/player.js';
+  sdk.async = true;
+  sdk.addEventListener('load', () => {
+    const frame = document.createElement('iframe');
+    frame.src = 'https://player.vimeo.com/video/' + wrap.dataset.vimeoId + '?background=1&autoplay=1&muted=1&loop=1&controls=0&title=0&byline=0&portrait=0&dnt=1&keyboard=0';
+    frame.allow = 'autoplay';
+    frame.tabIndex = -1;
+    frame.title = 'Decorative ocean waves video';
+    wrap.append(frame);
+
+    const player = new window.Vimeo.Player(frame);
+    let userPaused = false;
+    const updateToggle = () => {
+      toggle.textContent = userPaused ? 'Play background video' : 'Pause background video';
+    };
+    player.on('playing', () => {
+      if (motion.matches) {
+        player.pause().catch(() => {});
+        return;
+      }
+      wrap.classList.add('is-ready');
+      toggle.hidden = false;
+      updateToggle();
+    });
+    player.on('error', () => {
+      wrap.classList.remove('is-ready');
+      toggle.hidden = true;
+    });
+    toggle.addEventListener('click', async () => {
+      toggle.disabled = true;
+      try {
+        if (userPaused) await player.play();
+        else await player.pause();
+        userPaused = !userPaused;
+        updateToggle();
+      } catch {
+        wrap.classList.remove('is-ready');
+        toggle.hidden = true;
+      } finally {
+        toggle.disabled = false;
+      }
+    });
+    motion.addEventListener('change', event => {
+      if (!event.matches) return;
+      wrap.classList.remove('is-ready');
+      toggle.hidden = true;
+      player.pause().catch(() => {});
+    });
+  }, { once: true });
+  document.head.append(sdk);
+}
+
+function initContactForm() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  const submit = form.querySelector('button[type="submit"]');
+  const status = document.getElementById('formSuccessMessage');
+  const feedback = (message, isError = false) => {
+    status.textContent = message;
+    status.classList.toggle('is-error', isError);
+    status.hidden = false;
+  };
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    if (location.origin !== site.liveOrigin) {
+      feedback('Use the published site to send a message.');
+      return;
+    }
+    const fields = new FormData(form);
+    if (fields.get('botcheck') === 'on') return;
+    submit.disabled = true;
+    feedback('Sending your message…');
+    try {
+      const response = await fetch(form.action, { method: 'POST', body: fields, headers: { Accept: 'application/json' } });
+      const result = await response.json();
+      if (!response.ok || !result.success) throw new Error('The message was rejected.');
+      form.reset();
+      feedback('Thank you. Your message was sent.');
+      measure('contact_form_submit', { form_id: form.id }, 'Lead', { source: 'contact_form' });
+    } catch {
+      feedback('Your message could not be sent. Please try again or contact us on WhatsApp.', true);
+    } finally {
+      submit.disabled = false;
+    }
+  });
+}
+
+function initFaq() {
+  const buttons = [...document.querySelectorAll('.faq-toggle')];
+  for (const button of buttons) {
+    const panel = document.getElementById(button.getAttribute('aria-controls'));
+    button.addEventListener('click', () => {
+      const wasOpen = button.getAttribute('aria-expanded') === 'true';
+      for (const other of buttons) {
+        other.setAttribute('aria-expanded', 'false');
+        document.getElementById(other.getAttribute('aria-controls')).hidden = true;
+      }
+      if (!wasOpen) {
+        button.setAttribute('aria-expanded', 'true');
+        panel.hidden = false;
+      }
+    });
+  }
+}
 
 const search = document.getElementById('catalogue-search');
 if (search) {
@@ -382,3 +584,8 @@ window.addEventListener('storage', event => {
 document.querySelector('[data-year]').textContent = new Date().getFullYear();
 renderCart();
 initMetaPixel();
+initMobileDrawer();
+initHeader();
+initHeroVideo();
+initContactForm();
+initFaq();

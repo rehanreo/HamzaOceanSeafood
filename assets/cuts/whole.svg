@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" role="img"><title>Whole cleaned fish</title><defs>
+<pattern id="grain" width="110" height="34" patternUnits="userSpaceOnUse">
+<path d="M0 1h110M0 27c19-10 34 3 52-1s40-13 58-8M0 13c20 3 39-9 68-6s28 9 42 8" stroke="#d09562" fill="none" opacity=".18"/>
+</pattern>
+<linearGradient id="flesh" x2="0" y2="1"><stop stop-color="#f0b69f"/><stop offset="1" stop-color="#be6e5b"/></linearGradient>
+<linearGradient id="skin" x2="0" y2="1"><stop stop-color="#395466"/><stop offset=".57" stop-color="#99a9aa"/><stop offset="1" stop-color="#dce1d9"/></linearGradient>
+</defs>
+<path fill="#59382a" d="M0 0h560v340H0z"/><path fill="url(#grain)" d="M0 0h560v340H0z"/>
+<rect x="62" y="44" width="438" height="262" rx="48" fill="#1d110d" opacity=".33"/>
+<rect x="61" y="36" width="438" height="262" rx="46" fill="#fcfaf3" stroke="#d1c6b5" stroke-width="4"/>
+<rect x="81" y="57" width="398" height="220" rx="33" fill="#f1eee5" stroke="#e5ded0" stroke-width="2"/><g stroke="#384959" stroke-linejoin="round" stroke-width="3">
+  <path d="M190 136c19-30 53-38 95-29l29 21m-99 68c35 27 59 26 77 8" fill="#81929a"/>
+  <path d="M363 156l64-43-15 44 15 58-65-39" fill="#829798"/>
+  <path d="M116 168c30-55 128-74 188-52 29 11 48 29 68 49-22 20-38 36-72 44-59 14-150-2-184-41Z" fill="url(#skin)"/>
+  <path d="M177 133c22 19 21 45 4 63m12-30c17-7 30-5 45 3l-35 16" fill="none" stroke="#526977"/>
+  <circle cx="145" cy="156" r="9" fill="#f3dfae"/><circle cx="145" cy="156" r="4" fill="#233341"/>
+  <path d="M117 171l23 1" fill="none"/><path d="M224 146c36-9 79 1 111 16m-110 22c42 10 85 7 112-10" stroke="#f1eee5" opacity=".58" fill="none"/>
+</g></svg>
